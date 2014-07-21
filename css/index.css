@@ -1,0 +1,33 @@
+HTML, BODY {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  color: #f5faff;
+  background-color: #f5faff; }
+
+#map-container {
+  position: absolute;
+  width: 100%;
+  height: 100%; }
+  #map-container #map {
+    width: 100%;
+    height: 100%; }
+  #map-container .label-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 10px;
+    background-color: #f5faff;
+    color: #333947;
+    border-radius: 50px; }
+
+#right-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 375px;
+  height: 100%;
+  border-left: 1px solid #7c90a5;
+  background-color: #333947; }
