@@ -47,6 +47,7 @@ HTML, BODY {
     .label-container {
       padding: 6px 20px 8px;
       margin-left: -125px;
+      margin-top: 20px;
 
       background-color: $almostWhite;
       color: $darkBlue;
@@ -93,6 +94,7 @@ HTML, BODY {
 
   H2 {
     margin-top: -10px;
+    margin-bottom: 50px;
 
     font-family: 'Georgia', serif;
     font-style: italic;
@@ -103,15 +105,40 @@ HTML, BODY {
   }
 
   UL {
+    padding-left: 0;
+
     list-style-type: none;
 
     LI {
-      A {
-        font-size: 16px;
+      padding-bottom: 20px;
 
-        color: $almostWhite;
-        text-decoration: none;
+      &:before {
+        position: relative;
+        top: 2px;
+        width: 28px;
+
+        font-size: 25px;
+        margin-left: 1px;
+        margin-right: 20px;
       }
+
+      &.icon-mail:before {
+        font-size: 24px;
+      }
+
+      &.icon-camera:before {
+        font-size: 22px;
+      }
+    }
+
+    A {
+      position: relative;
+      top: -2px;
+      font-size: 16px;
+      font-weight: lighter;
+
+      color: $almostWhite;
+      text-decoration: none;
     }
   }
 

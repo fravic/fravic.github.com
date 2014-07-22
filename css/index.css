@@ -33,6 +33,7 @@ HTML, BODY {
     #map-container .marker .label-container {
       padding: 6px 20px 8px;
       margin-left: -125px;
+      margin-top: 20px;
       background-color: #f5faff;
       color: #333947;
       border-radius: 50px; }
@@ -69,15 +70,33 @@ HTML, BODY {
         background-size: 285px; } }
   #right-nav H2 {
     margin-top: -10px;
+    margin-bottom: 50px;
     font-family: 'Georgia', serif;
     font-style: italic;
     font-weight: normal;
     font-size: 30px;
     color: #50acff; }
   #right-nav UL {
+    padding-left: 0;
     list-style-type: none; }
-    #right-nav UL LI A {
+    #right-nav UL LI {
+      padding-bottom: 20px; }
+      #right-nav UL LI:before {
+        position: relative;
+        top: 2px;
+        width: 28px;
+        font-size: 25px;
+        margin-left: 1px;
+        margin-right: 20px; }
+      #right-nav UL LI.icon-mail:before {
+        font-size: 24px; }
+      #right-nav UL LI.icon-camera:before {
+        font-size: 22px; }
+    #right-nav UL A {
+      position: relative;
+      top: -2px;
       font-size: 16px;
+      font-weight: lighter;
       color: #f5faff;
       text-decoration: none; }
   #right-nav #footer {
