@@ -1,3 +1,5 @@
+@import 'bourbon/bourbon';
+
 $almostWhite: #f5faff;
 $vibrantBlue: #50acff;
 $lightBlue: #7c90a5;
@@ -9,6 +11,8 @@ HTML, BODY {
   padding: 0;
   margin: 0;
   border: 0;
+
+  font-family: 'Proxima Nova', Helvetica, sans-serif;
 
   color: $almostWhite;
   background-color: $almostWhite;
@@ -24,35 +28,103 @@ HTML, BODY {
     height: 100%;
   }
 
-  .label-container {
+  .marker {
     position: absolute;
     top: 50%;
     left: 50%;
-    padding: 10px;
 
-    background-color: $almostWhite;
-    color: $darkBlue;
-    border-radius: 50px;
+    .profile-pic {
+      width: 45px;
+      height: 45px;
+      margin-left: -(45/2) + px;
 
-    .label {
+      border: 1px solid $almostWhite;
+      border-radius: 30px;
+
+      @include retina-image('../img/profile_pic', 45px);
     }
 
-    .venue {
+    .label-container {
+      padding: 6px 20px 8px;
+      margin-left: -125px;
+
+      background-color: $almostWhite;
+      color: $darkBlue;
+      border-radius: 50px;
+
+      .label {
+        padding-left: 0.5px;
+
+        text-transform: lowercase;
+        font-variant: small-caps;
+      }
+
+      .venue-name {
+        font-size: 16px;
+        font-weight: bold;
+      }
     }
   }
 }
 
 #right-nav {
   position: absolute;
+  box-sizing: border-box;
   top: 0;
   right: 0;
   width: 375px;
   height: 100%;
+  padding: 30px 45px;
 
   border-left: 1px solid $lightBlue;
   background-color: $darkBlue;
-}
 
-#footer {
+  H1 {
+    width: (285 + 3)px;
+    height: 98px;
+    margin-bottom: 12px;
+    text-indent: -9999px;
 
+    @include retina-image('../img/fravic', 285px);
+    background-size: 302px;
+    background-repeat: no-repeat;
+    background-position-x: 3px;
+  }
+
+  H2 {
+    margin-top: -10px;
+
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 30px;
+
+    color: $vibrantBlue;
+  }
+
+  UL {
+    list-style-type: none;
+
+    LI {
+      A {
+        font-size: 16px;
+
+        color: $almostWhite;
+        text-decoration: none;
+      }
+    }
+  }
+
+  #footer {
+    position: absolute;
+    bottom: 40px;
+    right: 45px;
+    left: 45px;
+    font-size: 12px;
+    padding-top: 6px;
+
+    border-top: 1px solid $lightBlue;
+    color: $lightBlue;
+    opacity: .75;
+  }
 }

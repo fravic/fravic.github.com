@@ -4,6 +4,7 @@ HTML, BODY {
   padding: 0;
   margin: 0;
   border: 0;
+  font-family: 'Proxima Nova', Helvetica, sans-serif;
   color: #f5faff;
   background-color: #f5faff; }
 
@@ -14,20 +15,78 @@ HTML, BODY {
   #map-container #map {
     width: 100%;
     height: 100%; }
-  #map-container .label-container {
+  #map-container .marker {
     position: absolute;
     top: 50%;
-    left: 50%;
-    padding: 10px;
-    background-color: #f5faff;
-    color: #333947;
-    border-radius: 50px; }
+    left: 50%; }
+    #map-container .marker .profile-pic {
+      width: 45px;
+      height: 45px;
+      margin-left: -22.5px;
+      border: 1px solid #f5faff;
+      border-radius: 30px;
+      background-image: url("../img/profile_pic.png"); }
+      @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+        #map-container .marker .profile-pic {
+          background-image: url("../img/profile_pic_2x.png");
+          background-size: 45px; } }
+    #map-container .marker .label-container {
+      padding: 6px 20px 8px;
+      margin-left: -125px;
+      background-color: #f5faff;
+      color: #333947;
+      border-radius: 50px; }
+      #map-container .marker .label-container .label {
+        padding-left: 0.5px;
+        text-transform: lowercase;
+        font-variant: small-caps; }
+      #map-container .marker .label-container .venue-name {
+        font-size: 16px;
+        font-weight: bold; }
 
 #right-nav {
   position: absolute;
+  box-sizing: border-box;
   top: 0;
   right: 0;
   width: 375px;
   height: 100%;
+  padding: 30px 45px;
   border-left: 1px solid #7c90a5;
   background-color: #333947; }
+  #right-nav H1 {
+    width: 288 px;
+    height: 98px;
+    margin-bottom: 12px;
+    text-indent: -9999px;
+    background-image: url("../img/fravic.png");
+    background-size: 302px;
+    background-repeat: no-repeat;
+    background-position-x: 3px; }
+    @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+      #right-nav H1 {
+        background-image: url("../img/fravic_2x.png");
+        background-size: 285px; } }
+  #right-nav H2 {
+    margin-top: -10px;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-weight: normal;
+    font-size: 30px;
+    color: #50acff; }
+  #right-nav UL {
+    list-style-type: none; }
+    #right-nav UL LI A {
+      font-size: 16px;
+      color: #f5faff;
+      text-decoration: none; }
+  #right-nav #footer {
+    position: absolute;
+    bottom: 40px;
+    right: 45px;
+    left: 45px;
+    font-size: 12px;
+    padding-top: 6px;
+    border-top: 1px solid #7c90a5;
+    color: #7c90a5;
+    opacity: .75; }
