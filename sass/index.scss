@@ -18,6 +18,11 @@ HTML, BODY {
   background-color: $almostWhite;
 }
 
+A {
+  color: $almostWhite;
+  text-decoration: none;
+}
+
 #map-container {
   position: absolute;
   box-sizing: border-box;
@@ -147,9 +152,6 @@ HTML, BODY {
       top: -2px;
       font-size: 16px;
       font-weight: lighter;
-
-      color: $almostWhite;
-      text-decoration: none;
     }
   }
 
@@ -161,8 +163,14 @@ HTML, BODY {
     font-size: 12px;
     padding-top: 6px;
 
+    line-height: 1.4em;
+
     border-top: 1px solid $lightBlue;
     color: $lightBlue;
     opacity: .75;
+
+    A {
+      color: $lightBlue;
+    }
   }
 }

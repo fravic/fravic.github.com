@@ -8,6 +8,10 @@ HTML, BODY {
   color: #f5faff;
   background-color: #f5faff; }
 
+A {
+  color: #f5faff;
+  text-decoration: none; }
+
 #map-container {
   position: absolute;
   box-sizing: border-box;
@@ -105,9 +109,7 @@ HTML, BODY {
       position: relative;
       top: -2px;
       font-size: 16px;
-      font-weight: lighter;
-      color: #f5faff;
-      text-decoration: none; }
+      font-weight: lighter; }
   #right-nav #footer {
     position: absolute;
     bottom: 35px;
@@ -115,6 +117,9 @@ HTML, BODY {
     left: 45px;
     font-size: 12px;
     padding-top: 6px;
+    line-height: 1.4em;
     border-top: 1px solid #7c90a5;
     color: #7c90a5;
     opacity: .75; }
+    #right-nav #footer A {
+      color: #7c90a5; }
