@@ -9,8 +9,20 @@ class App
       null
     , true
 
+    @setupMap()
+
     $(window).on "resize", @onResize
     @onResize()
+
+  setupMap: =>
+    map = L.mapbox.map('map', 'fravic.j11ifpci', {
+      attributionControl: false
+      zoomControl: false
+    })
+    map.dragging.disable()
+    map.touchZoom.disable()
+    map.doubleClickZoom.disable()
+    map.scrollWheelZoom.disable()
 
   onResize: =>
 
@@ -19,4 +31,5 @@ class App
       navigator.userAgent || navigator.vendor || window.opera
     )
 
-window.App = App
+window.app = new App()
+$ app.render
