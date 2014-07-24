@@ -51,7 +51,7 @@ A {
       color: #333947;
       border-radius: 50px; }
       #map-container .marker .label-container .label {
-        padding-left: 0.5px;
+        padding-left: 1px;
         text-transform: lowercase;
         font-variant: small-caps; }
       #map-container .marker .label-container .venue-name {
