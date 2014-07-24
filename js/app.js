@@ -4,10 +4,15 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
+    var LOCATION_URL;
+
+    LOCATION_URL = 'http://54.85.163.238';
+
     function App() {
       this.onResize = __bind(this.onResize, this);
+      this.loadMapLocation = __bind(this.loadMapLocation, this);
       this.setupMap = __bind(this.setupMap, this);
-      this.render = __bind(this.render, this);
+      this.render = __bind(this.render, this);      this.map = null;
     }
 
     App.prototype.render = function() {
@@ -18,21 +23,45 @@
         return null;
       }, true);
       this.setupMap();
+      this.loadMapLocation();
       $(window).on("resize", this.onResize);
       return this.onResize();
     };
 
-    App.prototype.setupMap = function() {
-      var map;
+    App.prototype.renderMapMarker = function(name) {
+      $(".venue-name").html(name);
+      $(".created-at").html("Updated " + (moment(res.createdAt * 1000).fromNow()));
+      $(".label-container").css({
+        marginLeft: (-$(".label-container").outerWidth() / 2) + "px"
+      });
+      $(".marker").show();
+      return $(".created-at").show();
+    };
 
-      map = L.mapbox.map('map', 'fravic.j11ifpci', {
+    App.prototype.setupMap = function() {
+      this.map = L.mapbox.map('map', 'fravic.j11ifpci', {
         attributionControl: false,
         zoomControl: false
       });
-      map.dragging.disable();
-      map.touchZoom.disable();
-      map.doubleClickZoom.disable();
-      return map.scrollWheelZoom.disable();
+      this.map.dragging.disable();
+      this.map.touchZoom.disable();
+      this.map.doubleClickZoom.disable();
+      return this.map.scrollWheelZoom.disable();
+    };
+
+    App.prototype.loadMapLocation = function() {
+      var _this = this;
+
+      return $.getJSON(LOCATION_URL, function(res) {
+        if (res.apiError) {
+          console.log("API Error:", res.apiError);
+          return;
+        }
+        _this.map.setView([res.lat, res.lng], 13);
+        return _this.renderMapMarker(res.name);
+      }).error(function() {
+        return console.log("Server Error: Could not load map location");
+      });
     };
 
     App.prototype.onResize = function() {};

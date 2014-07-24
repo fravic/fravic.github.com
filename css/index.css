@@ -29,6 +29,7 @@ A {
     height: 100%; }
   #map-container .marker {
     position: absolute;
+    display: none;
     top: 50%;
     left: 50%;
     margin-top: -25px; }
@@ -45,7 +46,6 @@ A {
           background-size: 45px; } }
     #map-container .marker .label-container {
       padding: 6px 20px 8px;
-      margin-left: -125px;
       margin-top: 20px;
       background-color: #f5faff;
       color: #333947;
@@ -142,3 +142,8 @@ A {
     opacity: .75; }
     #right-nav #footer A {
       color: #7c90a5; }
+    #right-nav #footer .created-at {
+      display: none; }
+      #right-nav #footer .created-at:after {
+        content: "\a";
+        white-space: pre; }

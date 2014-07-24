@@ -45,6 +45,7 @@ A {
 
   .marker {
     position: absolute;
+    display: none;
     top: 50%;
     left: 50%;
     margin-top: -25px;
@@ -62,7 +63,6 @@ A {
 
     .label-container {
       padding: 6px 20px 8px;
-      margin-left: -125px;
       margin-top: 20px;
 
       background-color: $almostWhite;
@@ -194,6 +194,14 @@ A {
 
     A {
       color: $lightBlue;
+    }
+
+    .created-at {
+      display: none;
+      &:after {
+        content:"\a";
+        white-space: pre;
+      }
     }
   }
 }

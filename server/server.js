@@ -28,6 +28,9 @@ app.get('/', function(req, res) {
     function(statusCode, result) {
       var checkin, responseObj;
 
+      res.header('Access-Control-Allow-Origin', process.env.REQUEST_ORIGIN);
+      res.header('Access-Control-Allow-Methods', 'GET');
+
       if (statusCode == 200) {
         checkin = result.response.checkins.items[0];
         responseObj = {
@@ -36,6 +39,7 @@ app.get('/', function(req, res) {
           lng: checkin.venue.location.lng,
           createdAt: checkin.createdAt
         };
+
         res.send(JSON.stringify(responseObj));
       } else {
         res.send({apiError: result});
