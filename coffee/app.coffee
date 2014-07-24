@@ -20,13 +20,14 @@ class App
     $(window).on "resize", @onResize
     @onResize()
 
-  renderMapMarker: (name) ->
+  renderMapMarker: (name, createdAt) ->
     $(".venue-name").html name
-    $(".created-at").html "Updated #{moment(res.createdAt * 1000).fromNow()}"
+    $(".created-at").html "Updated #{moment(createdAt * 1000).fromNow()}"
 
-    $(".label-container").css marginLeft: (-$(".label-container").outerWidth()/2)+"px"
     $(".marker").show()
     $(".created-at").show()
+
+    $(".label-container").css marginLeft: (-$(".label-container").outerWidth()/2)+"px"
 
   setupMap: =>
     @map = L.mapbox.map('map', 'fravic.j11ifpci', {
@@ -45,7 +46,7 @@ class App
         return
 
       @map.setView([res.lat, res.lng], 13)
-      @renderMapMarker(res.name)
+      @renderMapMarker(res.name, res.createdAt)
     .error () ->
       console.log "Server Error: Could not load map location"
 

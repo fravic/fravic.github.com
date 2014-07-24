@@ -28,14 +28,14 @@
       return this.onResize();
     };
 
-    App.prototype.renderMapMarker = function(name) {
+    App.prototype.renderMapMarker = function(name, createdAt) {
       $(".venue-name").html(name);
-      $(".created-at").html("Updated " + (moment(res.createdAt * 1000).fromNow()));
-      $(".label-container").css({
+      $(".created-at").html("Updated " + (moment(createdAt * 1000).fromNow()));
+      $(".marker").show();
+      $(".created-at").show();
+      return $(".label-container").css({
         marginLeft: (-$(".label-container").outerWidth() / 2) + "px"
       });
-      $(".marker").show();
-      return $(".created-at").show();
     };
 
     App.prototype.setupMap = function() {
@@ -58,7 +58,7 @@
           return;
         }
         _this.map.setView([res.lat, res.lng], 13);
-        return _this.renderMapMarker(res.name);
+        return _this.renderMapMarker(res.name, res.createdAt);
       }).error(function() {
         return console.log("Server Error: Could not load map location");
       });
