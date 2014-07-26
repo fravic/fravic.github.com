@@ -39,10 +39,15 @@ HTML, BODY {
   margin: 0;
   border: 0;
 
-  font-family: 'Proxima Nova', Helvetica, sans-serif;
+  font-family: 'proxima-nova', Helvetica, sans-serif;
 
   color: $almostWhite;
   background-color: $almostWhite;
+}
+
+BODY {
+  position: relative;
+  min-height: 560px;
 }
 
 A {
@@ -104,7 +109,7 @@ A {
     .label-container {
       @include animation(slide-up-down 2.0s ease-in-out 0s infinite alternate);
 
-      padding: 6px 20px 6px;
+      padding: 5px 20px 5px;
       margin-top: 20px;
 
       background-color: $almostWhite;
@@ -112,7 +117,7 @@ A {
       border-radius: 50px;
 
       .label {
-        padding: 2px 0 2px 1px;
+        padding: 2px 0 0 1px;
         font-size: 9px;
 
         text-transform: uppercase;
@@ -120,6 +125,8 @@ A {
 
       .venue-name {
         font-size: 16px;
+        margin-top: -1px;
+
         font-weight: bold;
       }
     }
