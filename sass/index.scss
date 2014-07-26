@@ -6,6 +6,8 @@ $vibrantBlue: #50acff;
 $lightBlue: #7c90a5;
 $darkBlue: #333947;
 
+$mobile: 480px;
+
 @include keyframes(slide-up-down) {
   from {
     @include transform(translate3d(0,0,0));
@@ -24,6 +26,10 @@ $darkBlue: #333947;
     @include transform(scale(2.5,2.5));
     opacity: 0;
   }
+}
+
+* {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 HTML, BODY {
@@ -51,6 +57,12 @@ A {
   height: 100%;
   padding-right: 375px;
 
+  @media screen and (max-width: $mobile) {
+    position: static;
+    height: 300px;
+    padding-right: 0;
+  }
+
   #map {
     width: 100%;
     height: 100%;
@@ -62,6 +74,11 @@ A {
     left: -(375/2) + px;
     width: 100%;
     height: 100%;
+
+    @media screen and (max-width: $mobile) {
+      height: 300px;
+      left: 0;
+    }
   }
 
   .marker {
@@ -141,6 +158,16 @@ A {
   border-left: 1px solid $lightBlue;
   background-color: $darkBlue;
 
+  @media screen and (max-width: $mobile) {
+    position: static;
+    width: 100%;
+    height: auto;
+    padding: 15px 30px 25px;
+
+    border-left: none;
+    border-top: 1px solid $lightBlue;
+  }
+
   H1 {
     width: (285 + 3)px;
     height: 98px;
@@ -148,9 +175,15 @@ A {
     text-indent: -9999px;
 
     @include retina-image('../img/fravic', 285px);
-    background-size: 302px;
+    background-size: 285px;
     background-repeat: no-repeat;
     background-position-x: 3px;
+
+    @media screen and (max-width: $mobile) {
+      margin-bottom: 0;
+      margin-top: 18px;
+      background-size: 250px;
+    }
   }
 
   H2 {
@@ -163,6 +196,10 @@ A {
     font-size: 30px;
 
     color: $vibrantBlue;
+
+    @media screen and (max-width: $mobile) {
+      margin-bottom: 32px;
+    }
   }
 
   UL {
@@ -236,6 +273,11 @@ A {
     border-top: 1px solid $lightBlue;
     color: $lightBlue;
     opacity: .75;
+
+    @media screen and (max-width: $mobile) {
+      position: static;
+      margin-top: 35px;
+    }
 
     A {
       color: $lightBlue;
