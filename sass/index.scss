@@ -109,7 +109,7 @@ A {
     .label-container {
       @include animation(slide-up-down 2.0s ease-in-out 0s infinite alternate);
 
-      padding: 5px 20px 5px;
+      padding: 4px 20px 4px;
       margin-top: 20px;
 
       background-color: $almostWhite;
@@ -117,7 +117,7 @@ A {
       border-radius: 50px;
 
       .label {
-        padding: 2px 0 0 1px;
+        padding: 3px 0 0 1px;
         font-size: 9px;
 
         text-transform: uppercase;
