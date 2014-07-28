@@ -128,6 +128,7 @@ A {
       animation: slide-up-down 2s ease-in-out 0s infinite alternate;
       padding: 4px 20px 4px;
       margin-top: 20px;
+      white-space: nowrap;
       background-color: #f5faff;
       color: #333947;
       border-radius: 50px; }
