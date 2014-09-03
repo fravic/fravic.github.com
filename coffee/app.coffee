@@ -2,6 +2,10 @@ class App
 
   LOCATION_URL = 'http://54.85.163.238'
 
+  PROD_ROOT_DOMAIN = "fravic.com"
+  DEV_MIXPANEL_TOKEN = "3e0e6b7523b1b89c23e3f916353b4e29"
+  PROD_MIXPANEL_TOKEN = "7625405302264f41acc4ae05b9861ff7"
+
   constructor: ->
     @map = null
 
@@ -20,7 +24,13 @@ class App
     $(window).on "resize", @onResize
     @onResize()
 
+    @initAnalytics()
     mixpanel.track "index:view"
+
+  initAnalytics: ->
+    hostname = new URL(window.location).hostname
+    hostname = hostname.slice("www.".length) if hostname.indexOf("www.") == 0
+    mixpanel.init if hostname == PROD_ROOT_DOMAIN then PROD_MIXPANEL_TOKEN else DEV_MIXPANEL_TOKEN
 
   renderMapMarker: (name, createdAt) ->
     $(".venue-name").html name

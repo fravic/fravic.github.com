@@ -4,9 +4,15 @@
     __bind = function(fn, me){ return function(){ return fn.apply(me, arguments); }; };
 
   App = (function() {
-    var LOCATION_URL;
+    var DEV_MIXPANEL_TOKEN, LOCATION_URL, PROD_MIXPANEL_TOKEN, PROD_ROOT_DOMAIN;
 
     LOCATION_URL = 'http://54.85.163.238';
+
+    PROD_ROOT_DOMAIN = "fravic.com";
+
+    DEV_MIXPANEL_TOKEN = "3e0e6b7523b1b89c23e3f916353b4e29";
+
+    PROD_MIXPANEL_TOKEN = "7625405302264f41acc4ae05b9861ff7";
 
     function App() {
       this.onResize = __bind(this.onResize, this);
@@ -26,7 +32,18 @@
       this.loadMapLocation();
       $(window).on("resize", this.onResize);
       this.onResize();
+      this.initAnalytics();
       return mixpanel.track("index:view");
+    };
+
+    App.prototype.initAnalytics = function() {
+      var hostname;
+
+      hostname = new URL(window.location).hostname;
+      if (hostname.indexOf("www.") === 0) {
+        hostname = hostname.slice("www.".length);
+      }
+      return mixpanel.init(hostname === PROD_ROOT_DOMAIN ? PROD_MIXPANEL_TOKEN : DEV_MIXPANEL_TOKEN);
     };
 
     App.prototype.renderMapMarker = function(name, createdAt) {
