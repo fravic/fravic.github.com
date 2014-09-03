@@ -25,7 +25,8 @@
       this.setupMap();
       this.loadMapLocation();
       $(window).on("resize", this.onResize);
-      return this.onResize();
+      this.onResize();
+      return mixpanel.track("index:view");
     };
 
     App.prototype.renderMapMarker = function(name, createdAt) {

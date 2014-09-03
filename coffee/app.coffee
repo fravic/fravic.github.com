@@ -20,6 +20,8 @@ class App
     $(window).on "resize", @onResize
     @onResize()
 
+    mixpanel.track "index:view"
+
   renderMapMarker: (name, createdAt) ->
     $(".venue-name").html name
     $(".created-at").html "Updated #{moment(createdAt * 1000).fromNow()}"
