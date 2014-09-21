@@ -6,7 +6,7 @@
   App = (function() {
     var DEV_MIXPANEL_TOKEN, LOCATION_URL, PROD_MIXPANEL_TOKEN, PROD_ROOT_DOMAIN;
 
-    LOCATION_URL = 'http://54.85.163.238';
+    LOCATION_URL = 'http://fravic-com.herokuapp.com/';
 
     PROD_ROOT_DOMAIN = "fravic.com";
 

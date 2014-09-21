@@ -1,6 +1,6 @@
 class App
 
-  LOCATION_URL = 'http://54.85.163.238'
+  LOCATION_URL = 'http://fravic-com.herokuapp.com/'
 
   PROD_ROOT_DOMAIN = "fravic.com"
   DEV_MIXPANEL_TOKEN = "3e0e6b7523b1b89c23e3f916353b4e29"
