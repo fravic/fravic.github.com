@@ -1,10 +1,18 @@
 @import 'bourbon/bourbon';
 
-$almostWhite: #f5faff;
-$darkerWhite: #E6F5FF;
-$vibrantBlue: #50acff;
-$lightBlue: #7c90a5;
-$darkBlue: #333947;
+$darkText00: #595B5B;
+$darkText01: #7F7F7F;
+$highlightGreen00: #5CB3BC;
+$border00: #E5E5E5;
+$white00: #FFFFFF;
+
+$fontSerif: "ff-tisa-web-pro", Georgia, serif;
+$fontSans: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
+
+$weightRegular: 400;
+$weightBold: 700;
+
+$sizeBase: 15px;
 
 $mobile: 480px;
 
@@ -38,11 +46,12 @@ HTML, BODY {
   padding: 0;
   margin: 0;
   border: 0;
+  font-size: $sizeBase;
 
-  font-family: 'proxima-nova', Helvetica, sans-serif;
+  font-family: $fontSerif;
 
-  color: $almostWhite;
-  background-color: $almostWhite;
+  color: $darkText01;
+  background-color: $white00;
 }
 
 BODY {
@@ -51,8 +60,30 @@ BODY {
 }
 
 A {
-  color: $almostWhite;
+  color: $highlightGreen00;
   text-decoration: none;
+
+  &:hover {
+    color: darken($highlightGreen00, 10%);
+  }
+
+  &.btn {
+    padding: 0.4rem 1.2rem;
+    border: 1px solid $border00;
+
+    font-weight: $weightBold;
+    font-variant: small-caps;
+  }
+}
+
+H1 {
+  font-size: 1.66rem;
+}
+
+HEADER {
+  H1 {
+    font-size: 2.266rem;
+  }
 }
 
 #map-container {
@@ -100,7 +131,7 @@ A {
       margin-left: -(47/2) + px;
       z-index: 3;
 
-      border: 1px solid $almostWhite;
+      border: 1px solid $white00;
       border-radius: 30px;
 
       @include retina-image('../img/profile_pic', 45px);
@@ -113,8 +144,8 @@ A {
       margin-top: 20px;
       white-space: nowrap;
 
-      background-color: $almostWhite;
-      color: $darkBlue;
+      background-color: $white00;
+      color: $darkText01;
       border-radius: 50px;
 
       .label {
@@ -140,7 +171,7 @@ A {
       top: 0px;
       z-index: 0;
 
-      background-color: $darkerWhite;
+      background-color: $white00;
       border-radius: 45px;
     }
 
@@ -150,153 +181,6 @@ A {
 
     .pulsar-2 {
       @include animation(pulsar 2.0s ease-out 1.0s infinite);
-    }
-  }
-}
-
-#right-nav {
-  position: absolute;
-  @include box-sizing(border-box);
-  top: 0;
-  right: 0;
-  width: 375px;
-  height: 100%;
-  padding: 30px 45px;
-
-  border-left: 1px solid $lightBlue;
-  background-color: $darkBlue;
-
-  @media screen and (max-width: $mobile) {
-    position: static;
-    width: 100%;
-    height: auto;
-    padding: 15px 30px 25px;
-
-    border-left: none;
-    border-top: 1px solid $lightBlue;
-  }
-
-  H1 {
-    width: (285 + 3)px;
-    height: 98px;
-    margin-bottom: 12px;
-    text-indent: -9999px;
-
-    @include retina-image('../img/fravic', 285px);
-    background-size: 285px;
-    background-repeat: no-repeat;
-    background-position-x: 3px;
-
-    @media screen and (max-width: $mobile) {
-      margin-bottom: 0;
-      margin-top: 18px;
-      background-size: 250px;
-    }
-  }
-
-  H2 {
-    margin-top: -10px;
-    margin-bottom: 50px;
-
-    font-family: 'Georgia', serif;
-    font-style: italic;
-    font-weight: normal;
-    font-size: 30px;
-
-    color: $vibrantBlue;
-
-    @media screen and (max-width: $mobile) {
-      margin-bottom: 32px;
-    }
-  }
-
-  UL {
-    padding-left: 0;
-
-    list-style-type: none;
-
-    LI {
-      &:before {
-        position: relative;
-        top: 2px;
-        width: 28px;
-
-        font-size: 25px;
-        margin-left: 1px;
-        margin-right: 20px;
-      }
-
-      &.icon-mail:before {
-        font-size: 24px;
-      }
-
-      &.icon-camera:before {
-        font-size: 22px;
-      }
-    }
-
-    A {
-      @include transition(all 0.2s ease-out);
-
-      display: block;
-      position: relative;
-      top: -2px;
-      font-size: 16px;
-      padding: 7px 10px 10px;
-      margin-left: -10px;
-      margin-bottom: 10px;
-      border: 1px solid transparent;
-
-      font-weight: lighter;
-      border-radius: 4px;
-
-      &:hover {
-        box-shadow: 0px 2px 0px rgba(0,0,0,0.2);
-        border-top: 1px solid rgba(255,255,255,0.08);
-        border-left: 1px solid rgba(255,255,255,0.08);
-        border-right: 1px solid rgba(255,255,255,0.08);
-      }
-
-      &:active {
-        box-shadow: 0px -2px 0px rgba(0,0,0,0.2);
-        border-top: 1px solid transparent;
-        border-bottom: 1px solid rgba(255,255,255,0.08);
-        border-left: 1px solid rgba(255,255,255,0.08);
-        border-right: 1px solid rgba(255,255,255,0.08);
-        background-color: rgba(0,0,0,0.05);
-      }
-    }
-  }
-
-  #footer {
-    position: absolute;
-    bottom: 35px;
-    right: 45px;
-    left: 45px;
-    font-size: 12px;
-    padding-top: 6px;
-
-    line-height: 1.4em;
-
-    border-top: 1px solid $lightBlue;
-    color: $lightBlue;
-    opacity: .75;
-
-    @media screen and (max-width: $mobile) {
-      position: static;
-      margin-top: 35px;
-    }
-
-    A {
-      color: $lightBlue;
-    }
-
-    .created-at {
-      display: none;
-      &:after {
-        content:"\a";
-        white-space: pre;
-      }
     }
   }
 }

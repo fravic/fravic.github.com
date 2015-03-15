@@ -2,8 +2,6 @@
 <html>
   <head>
     <link href='css/index.css' rel='stylesheet' type='text/css' />
-    <link href='css/fontello/fontello.css' rel='stylesheet' type='text/css' />
-    <link href='css/fontello/fontello-embedded.css' rel='stylesheet' type='text/css' />
 
     <script src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js' type='text/javascript'></script>
 
@@ -16,7 +14,7 @@
     <script src='js/app.js' type='text/javascript'></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta content='Fravic, a software product designer in San Francisco. Waterloo Software Engineering 2013.' name='description'>
+    <meta content='Fravic, a UI/UX designer in San Francisco. Waterloo Software Engineering 2013.' name='description'>
 
     <!-- start Mixpanel -->
     <script type="text/javascript">
@@ -27,6 +25,22 @@
 
   </head>
   <body>
+
+    <div id='content'>
+      <header>
+	<h1>Fravic </h1>
+	<h2>UI/UX Designer</h2>
+	<p>Hey there, I'm Fravic. I'm a designer with a strong belief that virtual reality will reshape our future.</p>
+	<p>I rapidly <a>prototype</a> user interfaces, dig into <a>data</a> to back my decisions, then <a>implement</a> my designs. I aim to bring my obsession for physical world tidiness into software and the virtual world.</p>
+      </header>
+      <section>
+	<h1>Atomic</h1>
+	<span class='date'>2013 - present</span>
+	<p>For the past two years, I've been working for <a href='http://atomic.vc'>Atomic</a> in San Francisco. Alongside a stellar team, I design and build user interfaces for our three portfolio companies: Accuvit, Everalbum, and Zenreach.</p>
+      </section>
+      <a href='./static/Fravic.pdf' class='btn'>view resum&eacute;</a>
+    </div>
+
     <div id='map-container'>
       <div id='map'>
       </div>
@@ -38,27 +52,16 @@
             <div class='profile-pic'></div>
           </div>
           <div class='label-container'>
-            <div class='label'>Last Spotted At</div>
+            <div class='label'>Last Seen At</div>
             <div class='venue-name'></div>
           </div>
         </div>
       </div>
-    </div>
-    <div id='right-nav'>
-      <h1>Fravic</h1>
-      <h2>Come say hi!</h2>
-
-      <ul>
-        <a href='mailto:fravicf@gmail.com'><li class='icon-mail'>Email</li></a>
-        <a href='http://linkedin.com/in/fravic' target='_blank'><li class='icon-linkedin'>LinkedIn</li></a>
-        <a href='http://500px.com/fravic' target='_blank'><li class='icon-camera'>500px</li></a>
-        <a href='./static/Fravic.pdf' target='_blank'><li class='icon-briefcase'>Resume</li></a>
-      </ul>
-
       <div id='footer'>
         <span class='created-at'></span>
         <a href='https://www.mapbox.com/about/maps/' target='_blank'>Maps &copy; Mapbox &copy; OpenStreetMap</a>
       </div>
     </div>
+
   </body>
 </html>
