@@ -8,7 +8,9 @@
     <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.4/mapbox.css' rel='stylesheet' />
 
-    <script src='//use.typekit.net/est5agg.js' type='text/javascript'></script>
+    <script src="//use.typekit.net/hdo4nxo.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+
     <script src='//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js' type='text/javascript'></script>
 
     <script src='js/app.js' type='text/javascript'></script>
@@ -27,22 +29,36 @@
   <body>
 
     <div id='content'>
+
       <header>
-	<h1>Fravic</h1>
+	<h1>Fravic Fernando</h1>
 	<h2>UI/UX Designer</h2>
-	<div class=""
-	<p>Hey there, I'm Fravic. I'm a designer with a strong belief that virtual reality will reshape our future.</p>
-	<p>I rapidly <a>prototype</a> user interfaces, dig into <a>data</a> to back my decisions, then <a>implement</a> my designs. I aim to bring my obsession for physical world tidiness into software and the virtual world.</p>
+	<div class="section-content">
+	  <p>Hey there, I'm Fravic. I'm a designer with a strong belief that virtual reality will reshape our future.</p>
+	  <p>I rapidly <a>prototype</a> user interfaces, dig into <a>data</a> to back my decisions, then <a>implement</a> my designs. I aim to bring my obsession for physical world tidiness into software and the virtual world.</p>
+	</div>
       </header>
+
+      <hr>
+
       <section>
 	<h1>Atomic</h1>
 	<span class='date'>2013 - present</span>
-	<p>For the past two years, I've been working for <a href='http://atomic.vc'>Atomic</a> in San Francisco. Alongside a stellar team, I design and build user interfaces for our three portfolio companies: Accuvit, Everalbum, and Zenreach.</p>
+	<div class="section-content">
+	  <p>For the past two years, I've been working for <a href='http://atomic.vc'>Atomic</a> in San Francisco. Alongside a stellar team, I design and build user interfaces for our three portfolio companies: Accuvit, Everalbum, and Zenreach.</p>
+	</div>
       </section>
-      <a href='./static/Fravic.pdf' class='btn'>view resum&eacute;</a>
-    </div>
+
+      <hr class="alt">
+
+      <section id="cta">
+	<a href='./static/Fravic.pdf' class='btn' target='_blank'>view resum&eacute;</a>
+      </section>
+
+    </div> <!-- /#content -->
 
     <div id='map-container'>
+      <div id='map-top-skew'></div>
       <div id='map'>
       </div>
       <div class='marker-container'>
@@ -59,8 +75,7 @@
         </div>
       </div>
       <div id='footer'>
-        <span class='created-at'></span>
-        <a href='https://www.mapbox.com/about/maps/' target='_blank'>Maps &copy; Mapbox &copy; OpenStreetMap</a>
+        <a href='https://www.mapbox.com/about/maps/' target='_blank'>&copy; Mapbox &copy; OpenStreetMap</a>
       </div>
     </div>
 
