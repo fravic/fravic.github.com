@@ -24,6 +24,12 @@ HTML, BODY {
   @media screen and (min-width: $desktop) {
     font-size: 15px;
   }
+  @media screen and (min-width: $wide-desktop) {
+    font-size: 21px;
+  }
+  @media screen and (min-width: $very-wide-desktop) {
+    font-size: 28px;
+  }
 }
 
 BODY {

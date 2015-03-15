@@ -10,9 +10,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 40%;
+    width: 33%;
     height: 100%;
-    max-width: 400px;
     min-height: 100vh;
   }
 
@@ -32,13 +31,13 @@
 
     .profile-pic {
       position: relative;
-      width: 50px;
-      height: 50px;
-      margin-left: -(50/2) + px;
+      width: 3.5rem;
+      height: 3.5rem;
+      margin-left: -(3.5/2) + rem;
       z-index: 3;
 
       border: 2px solid $white00;
-      border-radius: 30px;
+      border-radius: 100%;
 
       @include retina-image('../img/profile_pic', 100%);
     }
@@ -75,14 +74,14 @@
 
     .pulsar-1, .pulsar-2 {
       position: absolute;
-      width: (50 + 2) + px;
-      height: (50 + 2) + px;
-      left: -(50/2)+px;
+      width: 3.5rem;
+      height: 3.5rem;
+      left: -(3.5/2)+rem;
       top: 0px;
       z-index: 0;
 
       background-color: $white00;
-      border-radius: 45px;
+      border-radius: 100%;
     }
 
     .pulsar-1 {

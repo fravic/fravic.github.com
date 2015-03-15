@@ -53,6 +53,10 @@
       $(".created-at").html("Updated " + (moment(createdAt * 1000).fromNow()));
       $(".marker").show();
       $(".created-at").show();
+      return this.repositionLabelContainer();
+    };
+
+    App.prototype.repositionLabelContainer = function() {
       return $(".label-container").css({
         marginLeft: (-$(".label-container").outerWidth() / 2) + "px"
       });
@@ -77,14 +81,16 @@
           console.log("API Error:", res.apiError);
           return;
         }
-        _this.map.setView([res.lat, res.lng], 13);
+        _this.map.setView([res.lat, res.lng], 12);
         return _this.renderMapMarker(res.name, res.createdAt);
       }).error(function() {
         return console.log("Server Error: Could not load map location");
       });
     };
 
-    App.prototype.onResize = function() {};
+    App.prototype.onResize = function() {
+      return this.repositionLabelContainer();
+    };
 
     App.prototype.isMobile = function() {
       return /Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i.test(navigator.userAgent || navigator.vendor || window.opera);

@@ -14,6 +14,8 @@ $sizeBase: 16px;
 
 $mobile: 480px;
 $desktop: 768px;
+$wide-desktop: 1450px;
+$very-wide-desktop: 2400px;
 
 @include keyframes(slide-up-down) {
   from {

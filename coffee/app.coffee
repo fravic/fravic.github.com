@@ -40,7 +40,9 @@ class App
 
     $(".marker").show()
     $(".created-at").show()
+    @repositionLabelContainer()
 
+  repositionLabelContainer: ->
     $(".label-container").css marginLeft: (-$(".label-container").outerWidth()/2)+"px"
 
   setupMap: =>
@@ -59,12 +61,13 @@ class App
         console.log "API Error:", res.apiError
         return
 
-      @map.setView([res.lat, res.lng], 13)
+      @map.setView([res.lat, res.lng], 12)
       @renderMapMarker(res.name, res.createdAt)
     .error () ->
       console.log "Server Error: Could not load map location"
 
   onResize: =>
+    @repositionLabelContainer()
 
   isMobile: ->
     return (/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(
