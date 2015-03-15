@@ -156,6 +156,15 @@ table {
   position: relative;
   width: 100%;
   height: 40rem; }
+  @media screen and (min-width: 768px) {
+    #map-container {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40%;
+      height: 100%;
+      max-width: 400px;
+      min-height: 100vh; } }
   #map-container .marker-container {
     position: absolute;
     top: 0;
@@ -234,9 +243,13 @@ table {
     height: 2.5rem;
     z-index: 10;
     background-color: #FFFFFF; }
+    @media screen and (min-width: 480px) {
+      #map-container #map-top-skew {
+        display: none; } }
   #map-container #footer {
     position: absolute;
     bottom: 0;
+    right: 0;
     padding: 0.75rem 0.75rem 0.5rem;
     box-sizing: border-box;
     font-size: 0.8rem;
@@ -244,14 +257,17 @@ table {
     line-height: 1.4em;
     border-top-right-radius: 1px; }
     #map-container #footer a {
-      color: #7F7F7F; }
+      color: #7F7F7F;
+      text-decoration: none; }
+    @media screen and (min-width: 480px) {
+      #map-container #footer {
+        padding: 0.5rem 0.6rem 0.4rem; } }
 
 * {
   -webkit-tap-highlight-color: transparent; }
 
 HTML, BODY {
   width: 100%;
-  height: 100%;
   padding: 0;
   margin: 0;
   border: 0;
@@ -260,6 +276,9 @@ HTML, BODY {
   color: #7F7F7F;
   background-color: #FFFFFF;
   -webkit-font-smoothing: antialiased; }
+  @media screen and (min-width: 768px) {
+    HTML, BODY {
+      font-size: 15px; } }
 
 BODY {
   position: relative;
@@ -268,7 +287,6 @@ BODY {
 
 A {
   color: #5CB3BC;
-  text-decoration: none;
   font-style: italic; }
   A:hover {
     color: #4399a2; }
@@ -292,6 +310,9 @@ HR {
   margin: 5rem 0;
   border: none;
   background-color: #E5E5E5; }
+  @media screen and (min-width: 480px) {
+    HR {
+      display: none; } }
   HR.alt {
     -webkit-transform: skewY(4.5deg) scaleX(1.25);
     -moz-transform: skewY(4.5deg) scaleX(1.25);
@@ -322,7 +343,11 @@ A.btn {
   font-variant: small-caps;
   font-style: normal;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.07);
-  border-radius: 1px; }
+  border-radius: 1px;
+  text-decoration: none; }
+  @media screen and (min-width: 768px) {
+    A.btn {
+      font-size: 1.2rem; } }
 
 .date {
   font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
@@ -334,9 +359,19 @@ A.btn {
 #content {
   overflow: hidden;
   padding: 3rem 1.5rem; }
+  @media screen and (min-width: 768px) {
+    #content {
+      max-width: 22rem;
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+      padding-left: 10%; } }
 
 #cta {
   margin-bottom: 1rem;
   text-align: center; }
+  @media screen and (min-width: 768px) {
+    #cta {
+      margin-bottom: 0;
+      text-align: left; } }
 
 /*# sourceMappingURL=index.css.map */

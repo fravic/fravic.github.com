@@ -9,7 +9,6 @@
 
 HTML, BODY {
   width: 100%;
-  height: 100%;
   padding: 0;
   margin: 0;
   border: 0;
@@ -21,6 +20,10 @@ HTML, BODY {
   background-color: $white00;
 
   -webkit-font-smoothing: antialiased;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 15px;
+  }
 }
 
 BODY {
@@ -31,7 +34,6 @@ BODY {
 
 A {
   color: $highlightGreen00;
-  text-decoration: none;
   font-style: italic;
 
   &:hover {
@@ -59,6 +61,10 @@ HR {
   border: none;
 
   background-color: $border00;
+
+  @media screen and (min-width: $mobile) {
+    display: none;
+  }
 
   &.alt {
     @include transform(skewY(4.5deg) scaleX(1.25));
@@ -97,6 +103,11 @@ A.btn {
   font-style: normal;
   box-shadow: 0 1px 1px rgba(0,0,0,.07);
   border-radius: 1px;
+  text-decoration: none;
+
+  @media screen and (min-width: $desktop) {
+    font-size: 1.2rem;
+  }
 }
 
 .date {
@@ -111,9 +122,21 @@ A.btn {
 #content {
   overflow: hidden;
   padding: 3rem 1.5rem;
+
+  @media screen and (min-width: $desktop) {
+    max-width: 22rem;
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+    padding-left: 10%;
+  }
 }
 
 #cta {
   margin-bottom: 1rem;
   text-align: center;
+
+  @media screen and (min-width: $desktop) {
+    margin-bottom: 0;
+    text-align: left;
+  }
 }
