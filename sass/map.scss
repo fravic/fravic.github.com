@@ -75,9 +75,9 @@
 
     .pulsar-1, .pulsar-2 {
       position: absolute;
-      width: (45 + 2) + px;
-      height: (45 + 2) + px;
-      left: -(47/2)+px;
+      width: (50 + 2) + px;
+      height: (50 + 2) + px;
+      left: -(50/2)+px;
       top: 0px;
       z-index: 0;
 
@@ -125,7 +125,7 @@
 
     background-color: fade-out($white00, .5);
     line-height: 1.4em;
-    border-top-right-radius: 1px;
+    border-top-left-radius: 1px;
 
     a {
       color: $darkText01;

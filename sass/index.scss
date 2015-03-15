@@ -91,6 +91,8 @@ HEADER {
 }
 
 A.btn {
+  @include transition(all 0.25s ease-out);
+
   display: inline-block;
   padding: 0.7rem 1.5rem 0.5rem;
   margin: 0 auto;
@@ -107,6 +109,16 @@ A.btn {
 
   @media screen and (min-width: $desktop) {
     font-size: 1.2rem;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 2px rgba(0,0,0,.08);
+    color: lighten($highlightGreen00, 8%);
+  }
+
+  &:active {
+    box-shadow: none;
+    color: darken($highlightGreen00, 10%);
   }
 }
 
