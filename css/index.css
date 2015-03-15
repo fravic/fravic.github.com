@@ -1,3 +1,50 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline; }
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+body {
+  line-height: 1; }
+
+ol, ul {
+  list-style: none; }
+
+blockquote, q {
+  quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
 @-webkit-keyframes slide-up-down {
   from {
     -webkit-transform: translate3d(0, 0, 0); }
@@ -50,6 +97,141 @@
     -o-transform: scale(2.5, 2.5);
     transform: scale(2.5, 2.5);
     opacity: 0; } }
+@-webkit-keyframes slide-up-down {
+  from {
+    -webkit-transform: translate3d(0, 0, 0); }
+  to {
+    -webkit-transform: translate3d(0, -3px, 0); } }
+@-moz-keyframes slide-up-down {
+  from {
+    -moz-transform: translate3d(0, 0, 0); }
+  to {
+    -moz-transform: translate3d(0, -3px, 0); } }
+@keyframes slide-up-down {
+  from {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+  to {
+    -webkit-transform: translate3d(0, -3px, 0);
+    -moz-transform: translate3d(0, -3px, 0);
+    -ms-transform: translate3d(0, -3px, 0);
+    -o-transform: translate3d(0, -3px, 0);
+    transform: translate3d(0, -3px, 0); } }
+@-webkit-keyframes pulsar {
+  from {
+    -webkit-transform: scale(1, 1);
+    opacity: .4; }
+  to {
+    -webkit-transform: scale(2.5, 2.5);
+    opacity: 0; } }
+@-moz-keyframes pulsar {
+  from {
+    -moz-transform: scale(1, 1);
+    opacity: .4; }
+  to {
+    -moz-transform: scale(2.5, 2.5);
+    opacity: 0; } }
+@keyframes pulsar {
+  from {
+    -webkit-transform: scale(1, 1);
+    -moz-transform: scale(1, 1);
+    -ms-transform: scale(1, 1);
+    -o-transform: scale(1, 1);
+    transform: scale(1, 1);
+    opacity: .4; }
+  to {
+    -webkit-transform: scale(2.5, 2.5);
+    -moz-transform: scale(2.5, 2.5);
+    -ms-transform: scale(2.5, 2.5);
+    -o-transform: scale(2.5, 2.5);
+    transform: scale(2.5, 2.5);
+    opacity: 0; } }
+#map-container {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+  height: 100%; }
+  @media screen and (max-width: 480px) {
+    #map-container {
+      position: static;
+      height: 300px;
+      padding-right: 0; } }
+  #map-container #map {
+    width: 100%;
+    height: 100%; }
+  #map-container .marker-container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%; }
+    @media screen and (max-width: 480px) {
+      #map-container .marker-container {
+        height: 300px;
+        left: 0; } }
+  #map-container .marker {
+    position: absolute;
+    display: none;
+    top: 50%;
+    left: 50%;
+    margin-top: -25px; }
+    #map-container .marker .profile-pic {
+      position: relative;
+      width: 45px;
+      height: 45px;
+      margin-left: -23.5px;
+      z-index: 3;
+      border: 2px solid #FFFFFF;
+      border-radius: 30px;
+      background-image: url("../img/profile_pic.png"); }
+      @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
+        #map-container .marker .profile-pic {
+          background-image: url("../img/profile_pic_2x.png");
+          background-size: 45px; } }
+    #map-container .marker .label-container {
+      -webkit-animation: slide-up-down 2s ease-in-out 0s infinite alternate;
+      -moz-animation: slide-up-down 2s ease-in-out 0s infinite alternate;
+      animation: slide-up-down 2s ease-in-out 0s infinite alternate;
+      padding: .5rem 1rem;
+      margin-top: 20px;
+      white-space: nowrap;
+      font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
+      background-color: #FFFFFF;
+      color: #7F7F7F;
+      border-radius: 1px;
+      text-align: center;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); }
+      #map-container .marker .label-container .label {
+        font-size: 0.6rem;
+        padding: 3px 0 0 1px;
+        margin-bottom: 0.25rem;
+        text-transform: uppercase;
+        font-style: italic; }
+      #map-container .marker .label-container .venue-name {
+        font-size: 0.933rem;
+        font-weight: bold; }
+    #map-container .marker .pulsar-1, #map-container .marker .pulsar-2 {
+      position: absolute;
+      width: 47px;
+      height: 47px;
+      left: -23.5px;
+      top: 0px;
+      z-index: 0;
+      background-color: #FFFFFF;
+      border-radius: 45px; }
+    #map-container .marker .pulsar-1 {
+      -webkit-animation: pulsar 2s ease-out 0s infinite;
+      -moz-animation: pulsar 2s ease-out 0s infinite;
+      animation: pulsar 2s ease-out 0s infinite; }
+    #map-container .marker .pulsar-2 {
+      -webkit-animation: pulsar 2s ease-out 1s infinite;
+      -moz-animation: pulsar 2s ease-out 1s infinite;
+      animation: pulsar 2s ease-out 1s infinite; }
+
 * {
   -webkit-tap-highlight-color: transparent; }
 
@@ -70,100 +252,42 @@ BODY {
 
 A {
   color: #5CB3BC;
-  text-decoration: none; }
+  text-decoration: none;
+  font-style: italic; }
   A:hover {
     color: #4399a2; }
   A.btn {
     padding: 0.4rem 1.2rem;
     border: 1px solid #E5E5E5;
     font-weight: 700;
-    font-variant: small-caps; }
+    font-variant: small-caps;
+    font-style: normal;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.07); }
 
 H1 {
-  font-size: 1.66rem; }
+  font-size: 1.66rem;
+  margin-bottom: .4rem;
+  color: #595B5B; }
+
+P {
+  margin-bottom: 1rem;
+  line-height: 1.53rem; }
+
+.date {
+  font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
+  color: #5CB3BC;
+  font-variant: small-caps; }
+
+HEADER, SECTION {
+  margin-bottom: 4rem; }
 
 HEADER H1 {
-  font-size: 2.266rem; }
-
-#map-container {
-  position: absolute;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  padding-right: 375px; }
-  @media screen and (max-width: 480px) {
-    #map-container {
-      position: static;
-      height: 300px;
-      padding-right: 0; } }
-  #map-container #map {
-    width: 100%;
-    height: 100%; }
-  #map-container .marker-container {
-    position: absolute;
-    top: 0;
-    left: -187.5px;
-    width: 100%;
-    height: 100%; }
-    @media screen and (max-width: 480px) {
-      #map-container .marker-container {
-        height: 300px;
-        left: 0; } }
-  #map-container .marker {
-    position: absolute;
-    display: none;
-    top: 50%;
-    left: 50%;
-    margin-top: -25px; }
-    #map-container .marker .profile-pic {
-      position: relative;
-      width: 45px;
-      height: 45px;
-      margin-left: -23.5px;
-      z-index: 3;
-      border: 1px solid #FFFFFF;
-      border-radius: 30px;
-      background-image: url("../img/profile_pic.png"); }
-      @media only screen and (-webkit-min-device-pixel-ratio: 1.3), only screen and (min--moz-device-pixel-ratio: 1.3), only screen and (-o-min-device-pixel-ratio: 1.3 / 1), only screen and (min-resolution: 125dpi), only screen and (min-resolution: 1.3dppx) {
-        #map-container .marker .profile-pic {
-          background-image: url("../img/profile_pic_2x.png");
-          background-size: 45px; } }
-    #map-container .marker .label-container {
-      -webkit-animation: slide-up-down 2s ease-in-out 0s infinite alternate;
-      -moz-animation: slide-up-down 2s ease-in-out 0s infinite alternate;
-      animation: slide-up-down 2s ease-in-out 0s infinite alternate;
-      padding: 4px 20px 4px;
-      margin-top: 20px;
-      white-space: nowrap;
-      background-color: #FFFFFF;
-      color: #7F7F7F;
-      border-radius: 50px; }
-      #map-container .marker .label-container .label {
-        padding: 3px 0 0 1px;
-        font-size: 9px;
-        text-transform: uppercase; }
-      #map-container .marker .label-container .venue-name {
-        font-size: 16px;
-        margin-top: -1px;
-        font-weight: bold; }
-    #map-container .marker .pulsar-1, #map-container .marker .pulsar-2 {
-      position: absolute;
-      width: 47px;
-      height: 47px;
-      left: -23.5px;
-      top: 0px;
-      z-index: 0;
-      background-color: #FFFFFF;
-      border-radius: 45px; }
-    #map-container .marker .pulsar-1 {
-      -webkit-animation: pulsar 2s ease-out 0s infinite;
-      -moz-animation: pulsar 2s ease-out 0s infinite;
-      animation: pulsar 2s ease-out 0s infinite; }
-    #map-container .marker .pulsar-2 {
-      -webkit-animation: pulsar 2s ease-out 1s infinite;
-      -moz-animation: pulsar 2s ease-out 1s infinite;
-      animation: pulsar 2s ease-out 1s infinite; }
+  font-size: 2.266rem;
+  color: #595B5B; }
+HEADER H2 {
+  font-size: 1.2rem;
+  font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
+  font-weight: 400;
+  color: #5CB3BC; }
 
 /*# sourceMappingURL=index.css.map */

@@ -2,9 +2,11 @@ class App
 
   LOCATION_URL = 'http://fravic-com.herokuapp.com/'
 
-  PROD_ROOT_DOMAIN = "fravic.com"
-  DEV_MIXPANEL_TOKEN = "3e0e6b7523b1b89c23e3f916353b4e29"
-  PROD_MIXPANEL_TOKEN = "7625405302264f41acc4ae05b9861ff7"
+  PROD_ROOT_DOMAIN = 'fravic.com'
+  DEV_MIXPANEL_TOKEN = '3e0e6b7523b1b89c23e3f916353b4e29'
+  PROD_MIXPANEL_TOKEN = '7625405302264f41acc4ae05b9861ff7'
+
+  MAPBOX_MAP_ID = 'fravic.lff5k96b'
 
   constructor: ->
     @map = null
@@ -42,7 +44,7 @@ class App
     $(".label-container").css marginLeft: (-$(".label-container").outerWidth()/2)+"px"
 
   setupMap: =>
-    @map = L.mapbox.map('map', 'fravic.j11ifpci', {
+    @map = L.mapbox.map('map', MAPBOX_MAP_ID, {
       attributionControl: false
       zoomControl: false
     })

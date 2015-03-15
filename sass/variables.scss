@@ -1,0 +1,35 @@
+$darkText00: #595B5B;
+$darkText01: #7F7F7F;
+$highlightGreen00: #5CB3BC;
+$border00: #E5E5E5;
+$white00: #FFFFFF;
+
+$fontSerif: "ff-tisa-web-pro", Georgia, serif;
+$fontSans: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
+
+$weightRegular: 400;
+$weightBold: 700;
+
+$sizeBase: 15px;
+
+$mobile: 480px;
+
+@include keyframes(slide-up-down) {
+  from {
+    @include transform(translate3d(0,0,0));
+  }
+  to {
+    @include transform(translate3d(0,-3px,0));
+  }
+}
+
+@include keyframes(pulsar) {
+  from {
+    @include transform(scale(1.0,1.0));
+    opacity: .4;
+  }
+  to {
+    @include transform(scale(2.5,2.5));
+    opacity: 0;
+  }
+}
