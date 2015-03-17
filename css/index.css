@@ -307,7 +307,7 @@ H1 {
 
 P {
   margin-bottom: 1rem;
-  line-height: 1.53rem; }
+  line-height: 1.6rem; }
 
 HR {
   -webkit-transform: skewY(-4.5deg) scaleX(1.25);
@@ -372,14 +372,14 @@ A.btn {
   color: #5CB3BC; }
 
 .section-content {
-  margin-top: 1.4rem; }
+  margin-top: 1.5rem; }
 
 #content {
   overflow: hidden;
   padding: 3rem 1.5rem; }
   @media screen and (min-width: 768px) {
     #content {
-      max-width: 22rem;
+      max-width: 23rem;
       padding-top: 4.5rem;
       padding-bottom: 4.5rem;
       padding-left: 10%; } }
