@@ -76,8 +76,8 @@
       position: absolute;
       width: 3.5rem;
       height: 3.5rem;
-      left: -(3.5/2)+rem;
-      top: 0px;
+      left: -(3.5/2-.1)+rem;
+      top: .1rem;
       z-index: 0;
 
       background-color: $white00;
