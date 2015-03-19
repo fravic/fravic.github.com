@@ -38,6 +38,7 @@
 
       border: 2px solid $white00;
       border-radius: 100%;
+      background-size: 100%;
 
       @include retina-image('../img/profile_pic', 100%);
     }
