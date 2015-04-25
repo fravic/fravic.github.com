@@ -292,10 +292,10 @@ BODY {
   box-sizing: border-box; }
 
 A {
-  color: #5CB3BC;
+  color: #20b3ba;
   font-style: italic; }
   A:hover {
-    color: #4399a2; }
+    color: #19898e; }
 
 EM {
   font-style: italic; }
@@ -339,7 +339,7 @@ HEADER H2 {
   font-size: 1.2rem;
   font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
   font-weight: 400;
-  color: #5CB3BC; }
+  color: #20b3ba; }
 
 A.btn {
   -webkit-transition: all 0.25s ease-out;
@@ -362,14 +362,14 @@ A.btn {
       font-size: 1.2rem; } }
   A.btn:hover {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
-    color: #79c0c8; }
+    color: #29d2da; }
   A.btn:active {
     box-shadow: none;
-    color: #4399a2; }
+    color: #19898e; }
 
 .date {
   font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
-  color: #5CB3BC; }
+  color: #20b3ba; }
 
 .section-content {
   margin-top: 1.5rem; }
