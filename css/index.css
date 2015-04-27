@@ -198,7 +198,7 @@ table {
       white-space: nowrap;
       font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
       background-color: #FFFFFF;
-      color: #7F7F7F;
+      color: #7E8E99;
       border-radius: 1px;
       text-align: center;
       box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1); }
@@ -257,7 +257,7 @@ table {
     line-height: 1.4em;
     border-top-left-radius: 1px; }
     #map-container #footer a {
-      color: #7F7F7F;
+      color: #7E8E99;
       text-decoration: none; }
     @media screen and (min-width: 480px) {
       #map-container #footer {
@@ -273,7 +273,7 @@ HTML, BODY {
   border: 0;
   font-size: 16px;
   font-family: "ff-tisa-web-pro", Georgia, serif;
-  color: #7F7F7F;
+  color: #7E8E99;
   background-color: #FFFFFF;
   -webkit-font-smoothing: antialiased; }
   @media screen and (min-width: 768px) {
@@ -292,18 +292,19 @@ BODY {
   box-sizing: border-box; }
 
 A {
-  color: #20b3ba;
-  font-style: italic; }
+  color: #20B3BA;
+  text-decoration: none; }
   A:hover {
     color: #19898e; }
 
 EM {
-  font-style: italic; }
+  font-weight: bold;
+  color: #6e7f8b; }
 
 H1 {
   font-size: 1.66rem;
   margin-bottom: .25rem;
-  color: #4b4c4c; }
+  color: #4B4C4C; }
 
 P {
   margin-bottom: 1rem;
@@ -334,12 +335,12 @@ HEADER, SECTION {
 
 HEADER H1 {
   font-size: 2.266rem;
-  color: #4b4c4c; }
+  color: #4B4C4C; }
 HEADER H2 {
   font-size: 1.2rem;
   font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
   font-weight: 400;
-  color: #20b3ba; }
+  color: #20B3BA; }
 
 A.btn {
   -webkit-transition: all 0.25s ease-out;
@@ -369,7 +370,7 @@ A.btn {
 
 .date {
   font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
-  color: #20b3ba; }
+  color: #20B3BA; }
 
 .section-content {
   margin-top: 1.5rem; }
