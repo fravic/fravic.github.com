@@ -39,11 +39,13 @@ BODY {
 }
 
 A {
+  @include transition(all 0.25s ease-out);
+
   color: $highlightGreen00;
   text-decoration: none;
 
   &:hover {
-    color: darken($highlightGreen00, 10%);
+    color: lighten($highlightGreen00, 6%);
   }
 }
 
@@ -124,12 +126,12 @@ A.btn {
 
   &:hover {
     box-shadow: 0 2px 2px rgba(0,0,0,.08);
-    color: lighten($highlightGreen00, 8%);
+    color: lighten($highlightGreen00, 6%);
   }
 
   &:active {
     box-shadow: none;
-    color: darken($highlightGreen00, 10%);
+    color: darken($highlightGreen00, 6%);
   }
 }
 

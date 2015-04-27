@@ -292,10 +292,13 @@ BODY {
   box-sizing: border-box; }
 
 A {
+  -webkit-transition: all 0.25s ease-out;
+  -moz-transition: all 0.25s ease-out;
+  transition: all 0.25s ease-out;
   color: #20B3BA;
   text-decoration: none; }
   A:hover {
-    color: #19898e; }
+    color: #24ccd4; }
 
 EM {
   font-weight: bold;
@@ -363,10 +366,10 @@ A.btn {
       font-size: 1.2rem; } }
   A.btn:hover {
     box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
-    color: #29d2da; }
+    color: #24ccd4; }
   A.btn:active {
     box-shadow: none;
-    color: #19898e; }
+    color: #1c9aa0; }
 
 .date {
   font-family: "ff-tisa-sans-web-pro", Helvetica, sans-serif;
