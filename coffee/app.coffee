@@ -26,6 +26,8 @@ class App
     $(window).on "resize", @onResize
     @onResize()
 
+    $("#cta a").on "click", () -> mixpanel.track "cta:click"
+
     @initAnalytics()
     mixpanel.track "index:view"
 
