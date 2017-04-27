@@ -165,3 +165,11 @@ A.btn {
     text-align: left;
   }
 }
+
+.link-title {
+  color: $darkText00;
+
+  &:hover {
+    color: $highlightGreen00;
+  }
+}
