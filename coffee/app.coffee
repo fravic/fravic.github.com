@@ -21,7 +21,8 @@ class App
     , true
 
     @setupMap()
-    @loadMapLocation()
+    # @loadMapLocation()
+    @renderMapMarker("San Francisco", 0);
 
     $(window).on "resize", @onResize
     @onResize()
@@ -41,7 +42,7 @@ class App
     $(".created-at").html "Updated #{moment(createdAt * 1000).fromNow()}"
 
     $(".marker").show()
-    $(".created-at").show()
+    # $(".created-at").show()
     @repositionLabelContainer()
 
   repositionLabelContainer: ->
@@ -56,6 +57,7 @@ class App
     @map.touchZoom.disable()
     @map.doubleClickZoom.disable()
     @map.scrollWheelZoom.disable()
+    @map.setView([37.773972, -122.431297], 12)
 
   loadMapLocation: =>
     $.getJSON LOCATION_URL, (res) =>
