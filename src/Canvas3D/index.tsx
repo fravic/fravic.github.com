@@ -1,5 +1,10 @@
 import { a } from "@react-spring/three";
 import { a as aDom } from "@react-spring/web";
+import {
+  EffectComposer,
+  DepthOfField,
+  Bloom,
+} from "@react-three/postprocessing";
 import ReactDOM from "react-dom";
 import React, { useRef, useState } from "react";
 import { Canvas, useFrame, extend } from "react-three-fiber";
@@ -47,6 +52,9 @@ export function Canvas3D() {
           <Box position={[-1.2, 0, 0]} />
           <Box position={[1.2, 0, 0]} />
         </a.group>
+        <EffectComposer>
+          <Bloom />
+        </EffectComposer>
       </Canvas>
       <aDom.div
         className="bar"
