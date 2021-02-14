@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`molecule generators generates a polynucleotide chain from a base pair sequence 1`] = `
+Object {
+  "carbon": Array [],
+  "nitrogen": Array [],
+  "oxygen": Array [],
+  "phosphorous": Array [],
+}
+`;
