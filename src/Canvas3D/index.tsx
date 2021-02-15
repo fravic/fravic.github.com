@@ -1,3 +1,4 @@
+import * as THREE from "three";
 import { a } from "@react-spring/three";
 import { a as aDom } from "@react-spring/web";
 import {
@@ -6,38 +7,48 @@ import {
   Bloom,
 } from "@react-three/postprocessing";
 import ReactDOM from "react-dom";
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useMemo } from "react";
 import { Canvas, useFrame, extend } from "react-three-fiber";
 
+import { polynucleotideStrand } from "../molecules/generators";
 import { useYScroll } from "./hooks";
 
-type PropsType = { position: [number, number, number] };
+const atomArrays = polynucleotideStrand(
+  "GGCGAGGCCAGTTTCATTTGAGCATTAAATGTCAAGTTCTGCACGCTATCATCATCA"
+);
 
-function Box(props: PropsType) {
+const dummy = new THREE.Object3D();
+
+function PolynucleotideStrand() {
   // This reference will give us direct access to the mesh
-  const mesh = useRef();
+  const mesh = useRef<THREE.InstancedMesh | null>(null);
 
-  // Set up state for the hovered and active state
-  const [hovered, setHover] = useState(false);
-  const [active, setActive] = useState(false);
+  const carbonCount = atomArrays.carbon.length;
+  useFrame((state) => {
+    const meshCurrent = mesh.current;
+    if (meshCurrent === null) {
+      return;
+    }
+    atomArrays.carbon.forEach((atom, i) => {
+      const { pos } = atom;
+      dummy.position.set(pos[0], pos[1], pos[2]);
+      dummy.updateMatrix();
+      meshCurrent.setMatrixAt(i, dummy.matrix);
+    });
+    meshCurrent.instanceMatrix.needsUpdate = true;
+  });
 
   return (
-    <mesh
-      {...props}
-      ref={mesh}
-      scale={active ? [1.5, 1.5, 1.5] : [1, 1, 1]}
-      onClick={(event) => setActive(!active)}
-      onPointerOver={(event) => setHover(true)}
-      onPointerOut={(event) => setHover(false)}
-    >
-      <boxBufferGeometry args={[1, 1, 1]} />
-      <meshStandardMaterial color={hovered ? "hotpink" : "orange"} />
-    </mesh>
+    // @ts-ignore
+    <instancedMesh ref={mesh} args={[null, null, carbonCount]}>
+      <sphereBufferGeometry args={[0.3, 32, 32]} />
+      <meshPhongMaterial color={0x777777} />
+    </instancedMesh>
   );
 }
 
 export function Canvas3D() {
-  const y = useYScroll([-100, 2400], window);
+  const y = useYScroll([-1000, 0], window);
   return (
     <>
       <Canvas
@@ -48,9 +59,8 @@ export function Canvas3D() {
         <color attach="background" args={[1, 1, 1]} />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <a.group position-z={y.to((y: number) => (y / 500) * 25)}>
-          <Box position={[-1.2, 0, 0]} />
-          <Box position={[1.2, 0, 0]} />
+        <a.group position-y={y.to((y: number) => y / 100)}>
+          <PolynucleotideStrand />
         </a.group>
         <EffectComposer>
           <Bloom />
@@ -58,7 +68,7 @@ export function Canvas3D() {
       </Canvas>
       <aDom.div
         className="bar"
-        style={{ height: y.interpolate([-100, 2400], ["0%", "100%"]) }}
+        style={{ height: y.to([-100, 2400], ["0%", "100%"]) }}
       />
     </>
   );
