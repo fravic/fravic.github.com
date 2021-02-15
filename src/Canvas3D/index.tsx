@@ -1,14 +1,9 @@
 import * as THREE from "three";
 import { a } from "@react-spring/three";
 import { a as aDom } from "@react-spring/web";
-import {
-  EffectComposer,
-  DepthOfField,
-  Bloom,
-} from "@react-three/postprocessing";
-import ReactDOM from "react-dom";
-import React, { useRef, useState, useMemo } from "react";
-import { Canvas, useFrame, extend } from "react-three-fiber";
+import { EffectComposer, Bloom } from "@react-three/postprocessing";
+import React, { useRef } from "react";
+import { Canvas, useFrame } from "react-three-fiber";
 
 import { polynucleotideStrand } from "../molecules/generators";
 import { AtomType } from "../molecules/types";
@@ -30,6 +25,8 @@ const CARBON_RADIUS = 0.25;
 const OXYGEN_RADIUS = 0.15;
 const NITROGEN_RADIUS = 0.2;
 const PHOSPHORUS_RADIUS = 0.3;
+
+const CONTAINER_ROTATION_SPEED_RAD = 0.002;
 
 const dummy = new THREE.Object3D();
 
@@ -55,7 +52,14 @@ function PolynucleotideStrand() {
   const nitrogenMesh = useRef<THREE.InstancedMesh | null>(null);
   const phosphorusMesh = useRef<THREE.InstancedMesh | null>(null);
 
+  const containerRef = useRef<THREE.InstancedMesh | null>(null);
+
   useFrame((state) => {
+    const curRef = containerRef.current;
+    if (curRef) {
+      curRef.rotation.y += CONTAINER_ROTATION_SPEED_RAD;
+    }
+
     populateMesh(carbonMesh.current, atomArrays.carbon);
     populateMesh(oxygenMesh.current, atomArrays.oxygen);
     populateMesh(nitrogenMesh.current, atomArrays.nitrogen);
@@ -63,7 +67,7 @@ function PolynucleotideStrand() {
   });
 
   return (
-    <a.group>
+    <a.group ref={containerRef}>
       <instancedMesh
         ref={carbonMesh}
         // @ts-ignore
