@@ -1,5 +1,7 @@
 export type VectorType = [number, number, number];
 
+export type AnchorPairType = { sense: VectorType; antisense: VectorType };
+
 export const ADENINE = "A";
 export const CYTOSINE = "C";
 export const GUANINE = "G";
@@ -27,5 +29,5 @@ export type AtomArraysType = {
   carbon: Array<AtomType>;
   oxygen: Array<AtomType>;
   nitrogen: Array<AtomType>;
-  phosphorous: Array<AtomType>;
+  phosphorus: Array<AtomType>;
 };
