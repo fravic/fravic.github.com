@@ -1,13 +1,10 @@
 import * as THREE from "three";
-import { a } from "@react-spring/three";
-import { a as aDom } from "@react-spring/web";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import React, { useRef } from "react";
-import { Canvas, useFrame } from "react-three-fiber";
+import React, { useCallback, useEffect, useRef } from "react";
+import { Canvas, useThree, useFrame } from "react-three-fiber";
 
 import { polynucleotideStrand } from "../molecules/generators";
 import { AtomType } from "../molecules/types";
-import { useYScroll } from "./hooks";
 import { fasta } from "../sequence.fa";
 
 const atomArrays = polynucleotideStrand(fasta.split("\n")[1]);
@@ -66,7 +63,7 @@ function PolynucleotideStrand() {
   });
 
   return (
-    <a.group ref={containerRef}>
+    <group ref={containerRef}>
       <instancedMesh
         ref={carbonMesh}
         // @ts-ignore
@@ -112,33 +109,43 @@ function PolynucleotideStrand() {
         />
         <meshPhongMaterial color={PHOSPHORUS_COLOR} />
       </instancedMesh>
-    </a.group>
+    </group>
   );
 }
 
+function Camera() {
+  const ref = useRef<THREE.PerspectiveCamera>();
+  const { setDefaultCamera } = useThree();
+  useEffect(() => {
+    if (!ref.current) {
+      return;
+    }
+    setDefaultCamera(ref.current);
+  }, [setDefaultCamera]);
+  useFrame(() => {
+    if (!ref.current) {
+      return;
+    }
+    ref.current.lookAt(0, 10, 10);
+    ref.current.position.set(0, 10, 10);
+    ref.current.updateMatrixWorld();
+  });
+  return <perspectiveCamera ref={ref} fov={65} near={2} far={60} />;
+}
+
 export function Canvas3D() {
-  const y = useYScroll([-1000, 0], window);
   return (
     <>
-      <Canvas
-        className="canvas"
-        camera={{ position: [0, 5, 10], fov: 65, near: 2, far: 60 }}
-        gl={{ alpha: false }}
-      >
+      <Canvas className="canvas" gl={{ alpha: false }}>
+        <Camera />
         <color attach="background" args={[1, 1, 1]} />
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <a.group position-y={y.to((y: number) => y / 100)}>
-          <PolynucleotideStrand />
-        </a.group>
+        <PolynucleotideStrand />
         <EffectComposer>
           <Bloom />
         </EffectComposer>
       </Canvas>
-      <aDom.div
-        className="bar"
-        style={{ height: y.to([-100, 2400], ["0%", "100%"]) }}
-      />
     </>
   );
 }
