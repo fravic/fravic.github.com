@@ -1,0 +1,56 @@
+.appContainer {
+  max-width: 2000px;
+  margin: 0 auto;
+  font-family: "Open Sans", sans-serif;
+}
+
+.canvasContainer {
+  position: absolute;
+  height: 100vh;
+  min-width: 600px;
+  z-index: 1;
+}
+
+.bodyContainer {
+  position: relative;
+  z-index: 2;
+  padding: 20px;
+}
+
+.body h1 {
+  font-family: "Newsreader", serif;
+  font-size: 2em;
+}
+
+.body p {
+  line-height: 1.4em;
+  margin-bottom: 40px;
+}
+
+.fasta {
+  font-size: 12px;
+  line-height: 1.5em;
+  color: #4a4a4a;
+}
+
+@media (min-width: 768px) {
+  .canvasContainer {
+    width: 50%;
+  }
+
+  .bodyContainer {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: repeat(12, 1fr);
+    grid-template-rows: repeat(20, 1fr);
+  }
+
+  .body {
+    grid-column: 7 / span 4;
+    grid-row: 10 / span 10;
+  }
+
+  .fasta {
+    white-space: pre;
+  }
+}

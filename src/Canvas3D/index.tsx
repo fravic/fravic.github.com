@@ -8,10 +8,9 @@ import { Canvas, useFrame } from "react-three-fiber";
 import { polynucleotideStrand } from "../molecules/generators";
 import { AtomType } from "../molecules/types";
 import { useYScroll } from "./hooks";
+import { fasta } from "../sequence.fa";
 
-const atomArrays = polynucleotideStrand(
-  "GGCGAGGCCAGTTTCATTTGAGCATTAAATGTCAAGTTCTGCACGCTATCATCATCA"
-);
+const atomArrays = polynucleotideStrand(fasta.split("\n")[1]);
 
 const CARBON_COLOR = 0x7e7e7e;
 const OXYGEN_COLOR = 0xf29e8e;
@@ -122,7 +121,7 @@ export function Canvas3D() {
   return (
     <>
       <Canvas
-        style={{ width: "100%", height: "100%", position: "absolute", top: 0 }}
+        className="canvas"
         camera={{ position: [0, 5, 10], fov: 65, near: 2, far: 60 }}
         gl={{ alpha: false }}
       >
