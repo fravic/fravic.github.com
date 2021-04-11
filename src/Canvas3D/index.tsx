@@ -17,16 +17,16 @@ import {
 
 const entities = polynucleotideStrand(fasta.split("\n")[1]);
 
-const BACKBONE_COLOR = 0x7e7e7e;
+const BACKBONE_COLOR = 0x8d99ae;
 const BACKBONE_RADIUS = 0.25;
 const BACKBONE_SPHERE_WIDTH_SEGMENTS = 12;
 const BACKBONE_SPHERE_HEIGHT_SEGMENTS = 12;
 
 const BASE_COLORS = {
-  [ADENINE]: 0x8f84f7,
-  [CYTOSINE]: 0xf29e8e,
-  [GUANINE]: 0xaafe92,
-  [THYMINE]: 0xfffe92,
+  [ADENINE]: 0xe07a5f,
+  [CYTOSINE]: 0x8ecae6,
+  [GUANINE]: 0x81b29a,
+  [THYMINE]: 0xf2cc8f,
 };
 
 const CONTAINER_ROTATION_SPEED_RAD = 0.002;
@@ -78,7 +78,7 @@ function PolynucleotideStrand() {
             BACKBONE_SPHERE_HEIGHT_SEGMENTS,
           ]}
         />
-        <meshPhongMaterial color={BACKBONE_COLOR} />
+        <meshToonMaterial color={BACKBONE_COLOR} />
       </instancedMesh>
 
       <BaseInstancedMesh letter={ADENINE} />
@@ -103,7 +103,7 @@ function Camera() {
       return;
     }
     ref.current.lookAt(0, 10, 10);
-    ref.current.position.set(0, 10, 10);
+    ref.current.position.set(0, 10, window.innerWidth < 768 ? 15 : 10);
     ref.current.updateMatrixWorld();
   });
   return <perspectiveCamera ref={ref} fov={65} near={2} far={60} />;
@@ -115,7 +115,7 @@ export function Canvas3D() {
       <Canvas className="canvas" gl={{ alpha: false }}>
         <Camera />
         <color attach="background" args={[1, 1, 1]} />
-        <ambientLight />
+        <ambientLight color={0xeeeeee} intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
         <PolynucleotideStrand />
         <EffectComposer>
@@ -154,7 +154,7 @@ function BaseInstancedMesh(props: { letter: NucleotideLetterType }) {
       // @ts-ignore
       args={[capsuleGeometry, null, entities[props.letter].length]}
     >
-      <meshPhongMaterial color={BASE_COLORS[props.letter]} />
+      <meshToonMaterial color={BASE_COLORS[props.letter]} />
     </instancedMesh>
   );
 }

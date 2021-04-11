@@ -12,19 +12,19 @@ function App() {
       </div>
       <div className="bodyContainer">
         <div className="body">
-          <h1>Hi, I'm Fravic</h1>
-          <p>
-            This is a rough visualization of a section of my DNA that I built
-            using React and three.js. It contains one SNP tested by 23andMe
-            (highlighted) associated with my eye color. The other base pairs are
-            from the human genome reference sequence. Hydrogen omitted for
-            simplicity.
-          </p>
-          <div className="fasta">
-            {fasta.split("\n").map((line) => (
-              <div>{line}</div>
-            ))}
+          <div className="subject">Subject:</div>
+          <h1>Fravic Fernando</h1>
+          <div className="title">Software Engineer</div>
+          <div className="sample">
+            <h4>DNA Sample Section</h4>
+            <p>
+              Access granted &mdash; subject's 23andMe results □
+              <br />
+              Eye color gene segment, viz built with React and Three.JS □
+              <br />□ □ □ □ □
+            </p>
           </div>
+          <div className="fasta">{fasta.replace(/\n/, " ")}</div>
         </div>
       </div>
     </div>

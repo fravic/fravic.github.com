@@ -5,26 +5,35 @@
 
 .canvasContainer {
   position: absolute;
-  height: 100vh;
-  min-width: 600px;
+  height: 150vh;
+  width: 100%;
   z-index: 1;
+}
+
+.canvas {
+  background: white;
 }
 
 .bodyContainer {
   position: relative;
   z-index: 2;
-  padding: 20px;
+  padding: 30px 20px 50px;
   box-sizing: border-box;
+
+  word-wrap: break-word;
+
+  background: linear-gradient(180deg, white, rgba(255, 255, 255, 0));
+}
+
+.body {
+  max-width: 600px;
 }
 
 .body h1 {
   font-family: "Newsreader", serif;
-  font-size: 2em;
-}
-
-.body p {
-  line-height: 1.4em;
-  margin-bottom: 40px;
+  font-size: 2.5em;
+  margin-top: 10px;
+  margin-bottom: 3px;
 }
 
 .fasta {
@@ -33,24 +42,68 @@
   color: #4a4a4a;
 }
 
+.subject {
+  text-transform: uppercase;
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: 0.6em;
+  padding-left: 2px;
+}
+
+.title {
+  font-size: 12px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.sample {
+  margin-bottom: 30px;
+}
+
+.sample h4 {
+  display: inline-block;
+  padding: 8px 20px;
+  margin-bottom: 0;
+
+  border-top: 1px solid #84a59d;
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.sample p {
+  border-top: 1px solid #84a59d;
+  border-bottom: 1px solid #84a59d;
+  margin: 0;
+  padding: 10px 20px;
+
+  background: rgba(255, 255, 255, 0.5);
+}
+
 @media (min-width: 768px) {
   .canvasContainer {
     width: 50%;
+    height: 100vh;
   }
 
   .bodyContainer {
+    box-sizing: border-box;
     display: grid;
     height: 100vh;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(20, 1fr);
+
+    background: none;
   }
 
   .body {
-    grid-column: 7 / span 4;
+    max-width: none;
+    grid-column: 7 / span 5;
     grid-row: 10 / span 10;
   }
+}
 
-  .fasta {
-    white-space: pre;
+@media (min-width: 1025px) {
+  .body {
+    grid-column: 7 / span 4;
+    grid-row: 10 / span 10;
   }
 }
