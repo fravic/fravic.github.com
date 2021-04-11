@@ -31,3 +31,14 @@ export type AtomArraysType = {
   nitrogen: Array<AtomType>;
   phosphorus: Array<AtomType>;
 };
+
+export type MolViewPositionType = {
+  positions: {
+    carbon: Array<VectorType>;
+    oxygen: Array<VectorType>;
+    nitrogen: Array<VectorType>;
+    phosphorus: Array<VectorType>;
+  };
+  origin: VectorType;
+  endpoint: VectorType;
+};
