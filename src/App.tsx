@@ -17,6 +17,22 @@ function App() {
           <div className="subject typewriter-2">Software Engineer</div>
           <div className="sample">
             <h4>DNA Sample Section</h4>
+            <div className="icons">
+              <a
+                href="https://twitter.com/fravic"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-twitter-square"></i>
+              </a>
+              <a
+                href="https://linkedin.com/in/fravic"
+                target="_blank"
+                rel="noreferrer"
+              >
+                <i className="fab fa-linkedin"></i>
+              </a>
+            </div>
             <p>
               Access granted
               <br />

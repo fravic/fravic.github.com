@@ -73,6 +73,7 @@
   line-height: 1.3em;
   color: #6a6a6a;
   word-break: break-word;
+  max-width: 475px;
 
   font-family: var(--font-monospace);
   opacity: 0;
@@ -215,4 +216,23 @@
   to {
     width: 100%;
   }
+}
+
+.icons {
+  float: right;
+  position: relative;
+  top: 22px;
+  font-size: 26px;
+}
+
+.icons a {
+  color: var(--color-border);
+}
+
+.icons a:hover {
+  opacity: 0.8;
+}
+
+.icons a:not(:last-child) {
+  margin-right: 10px;
 }
