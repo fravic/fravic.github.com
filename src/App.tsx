@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 
 import { Canvas3D } from "./Canvas3D/";
@@ -10,11 +10,12 @@ function App() {
       <div className="canvasContainer">
         <Canvas3D />
       </div>
+      <div className="gradient" />
       <div className="bodyContainer">
         <div className="body">
-          <div className="subject">Subject:</div>
-          <h1>Fravic Fernando</h1>
-          <div className="subject">Software Engineer</div>
+          <div className="subject typewriter-0">Subject:</div>
+          <h1 className="typewriter-1">Fravic Fernando</h1>
+          <div className="subject typewriter-2">Software Engineer</div>
           <div className="sample">
             <h4>DNA Sample Section</h4>
             <p>
@@ -35,5 +36,4 @@ function App() {
     </div>
   );
 }
-
 export default App;

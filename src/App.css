@@ -1,5 +1,6 @@
 :root {
   --font-monospace: "Courier New", "Courier", monospace;
+  --color-border: #84a59d;
 }
 
 .appContainer {
@@ -14,8 +15,7 @@
   z-index: 1;
 
   opacity: 0;
-  animation: fade-in 1s linear 1s;
-  animation-fill-mode: forwards;
+  animation: fade-in 1s linear 1.75s forwards;
 }
 
 @keyframes fade-in {
@@ -32,14 +32,28 @@
 }
 
 .bodyContainer {
+  display: inline-block;
+  width: 100%;
   position: relative;
   z-index: 2;
   padding: 30px 20px 50px;
   box-sizing: border-box;
 
   word-wrap: break-word;
+}
 
-  background: linear-gradient(180deg, white, rgba(255, 255, 255, 0));
+.gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 450px;
+  z-index: 2;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0)
+  );
 }
 
 .body {
@@ -54,11 +68,15 @@
 }
 
 .fasta {
+  float: left;
   font-size: 12px;
   line-height: 1.3em;
-  color: #4a4a4a;
+  color: #6a6a6a;
+  word-break: break-word;
 
   font-family: var(--font-monospace);
+  opacity: 0;
+  animation: fade-in 1s linear 2.5s forwards;
 }
 
 .subject {
@@ -72,11 +90,49 @@
 }
 
 .sample {
-  margin-bottom: 30px;
+  float: left;
   margin-top: 10px;
   font-size: 15px;
+  height: 0;
+  overflow: hidden;
 
   font-family: var(--font-monospace);
+  animation: height-in 0.3s cubic-bezier(0.33, 1, 0.68, 1) 1.5s forwards;
+}
+
+@media (min-width: 1025px) {
+  .sample {
+    animation: height-in-wide-desktop 0.3s cubic-bezier(0.33, 1, 0.68, 1) 1.5s
+      forwards;
+  }
+}
+
+@keyframes height-in {
+  0% {
+    height: 0;
+    border-bottom-color: transparent;
+  }
+  10% {
+    border-bottom-color: var(--color-border);
+  }
+  100% {
+    height: 200px;
+    border-bottom-color: var(--color-border);
+  }
+}
+
+@keyframes height-in-wide-desktop {
+  0% {
+    height: 0;
+    border-bottom-color: transparent;
+  }
+  10% {
+    border-bottom-color: var(--color-border);
+  }
+  100% {
+    height: 180px;
+    border-bottom-color: var(--color-border);
+  }
 }
 
 .sample h4 {
@@ -84,13 +140,13 @@
   padding: 8px 20px;
   margin-bottom: 0;
 
-  border-top: 1px solid #84a59d;
+  border-top: 1px solid var(--color-border);
   font-weight: bold;
 }
 
 .sample p {
-  border-top: 1px solid #84a59d;
-  border-bottom: 1px solid #84a59d;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
   margin: 0;
   padding: 10px 20px;
 }
@@ -107,8 +163,6 @@
     height: 100vh;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: repeat(20, 1fr);
-
-    background: none;
   }
 
   .body {
@@ -116,11 +170,49 @@
     grid-column: 7 / span 5;
     grid-row: 10 / span 10;
   }
+
+  .gradient {
+    display: none;
+  }
 }
 
 @media (min-width: 1025px) {
   .body {
     grid-column: 7 / span 4;
     grid-row: 10 / span 10;
+  }
+}
+
+/* https://css-tricks.com/snippets/css/typewriter-effect/ */
+
+.typewriter-0,
+.typewriter-1,
+.typewriter-2 {
+  float: left;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  width: 0;
+}
+
+.typewriter-0 {
+  animation: typing 0.5s steps(8, end) forwards;
+}
+
+.typewriter-1 {
+  animation: typing 0.5s steps(15, end) 0.5s forwards;
+}
+
+.typewriter-2 {
+  animation: typing 0.5s steps(17, end) 1s forwards;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
   }
 }
