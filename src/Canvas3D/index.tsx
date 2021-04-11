@@ -1,27 +1,32 @@
 import * as THREE from "three";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { Canvas, useThree, useFrame } from "react-three-fiber";
 
 import { polynucleotideStrand } from "../molecules/generators";
-import { AtomType } from "../molecules/types";
 import { fasta } from "../sequence.fa";
+import {
+  EntityType,
+  ADENINE,
+  CYTOSINE,
+  GUANINE,
+  THYMINE,
+  NucleotideLetterType,
+} from "../molecules/types";
 
-const atomArrays = polynucleotideStrand(fasta.split("\n")[1]);
+const entities = polynucleotideStrand(fasta.split("\n")[1]);
 
-const CARBON_COLOR = 0x7e7e7e;
-const OXYGEN_COLOR = 0xf29e8e;
-const NITROGEN_COLOR = 0x8f84f7;
-const PHOSPHORUS_COLOR = 0xfffe92;
+const BACKBONE_COLOR = 0x7e7e7e;
+const BACKBONE_RADIUS = 0.375;
+const BACKBONE_SPHERE_WIDTH_SEGMENTS = 12;
+const BACKBONE_SPHERE_HEIGHT_SEGMENTS = 12;
 
-const ATOM_WIDTH_SEGMENTS = 12;
-const ATOM_HEIGHT_SEGMENTS = 12;
-
-const CARBON_RADIUS = 0.125;
-const OXYGEN_RADIUS = 0.075;
-const NITROGEN_RADIUS = 0.1;
-//const PHOSPHORUS_RADIUS = 0.3;
-const PHOSPHORUS_RADIUS = 0.1;
+const BASE_COLORS = {
+  [ADENINE]: 0x8f84f7,
+  [CYTOSINE]: 0xf29e8e,
+  [GUANINE]: 0xaafe92,
+  [THYMINE]: 0xfffe92,
+};
 
 const CONTAINER_ROTATION_SPEED_RAD = 0.002;
 
@@ -29,14 +34,16 @@ const dummy = new THREE.Object3D();
 
 function populateMesh(
   mesh: THREE.InstancedMesh | null,
-  atoms: Array<AtomType>
+  entities: Array<EntityType>
 ) {
   if (mesh === null) {
     return;
   }
-  atoms.forEach((atom, i) => {
-    const { pos } = atom;
-    dummy.position.set(pos[0], pos[1], pos[2]);
+  entities.forEach((ent, i) => {
+    const { pos, rot, scale } = ent;
+    dummy.position.set(pos.x, pos.y, pos.z);
+    dummy.rotation.set(rot.x, rot.y, rot.z);
+    dummy.scale.set(scale.x, scale.y, scale.z);
     dummy.updateMatrix();
     mesh.setMatrixAt(i, dummy.matrix);
   });
@@ -44,11 +51,7 @@ function populateMesh(
 }
 
 function PolynucleotideStrand() {
-  const carbonMesh = useRef<THREE.InstancedMesh | null>(null);
-  const oxygenMesh = useRef<THREE.InstancedMesh | null>(null);
-  const nitrogenMesh = useRef<THREE.InstancedMesh | null>(null);
-  const phosphorusMesh = useRef<THREE.InstancedMesh | null>(null);
-
+  const backboneMesh = useRef<THREE.InstancedMesh | null>(null);
   const containerRef = useRef<THREE.InstancedMesh | null>(null);
 
   useFrame((state) => {
@@ -57,59 +60,30 @@ function PolynucleotideStrand() {
       curRef.rotation.y += CONTAINER_ROTATION_SPEED_RAD;
     }
 
-    populateMesh(carbonMesh.current, atomArrays.carbon);
-    populateMesh(oxygenMesh.current, atomArrays.oxygen);
-    populateMesh(nitrogenMesh.current, atomArrays.nitrogen);
-    populateMesh(phosphorusMesh.current, atomArrays.phosphorus);
+    populateMesh(backboneMesh.current, entities.backbone);
   });
 
   return (
     <group ref={containerRef}>
       <instancedMesh
-        ref={carbonMesh}
+        ref={backboneMesh}
         // @ts-ignore
-        args={[null, null, atomArrays.carbon.length]}
+        args={[null, null, entities.backbone.length]}
       >
         <sphereBufferGeometry
-          args={[CARBON_RADIUS, ATOM_WIDTH_SEGMENTS, ATOM_HEIGHT_SEGMENTS]}
+          args={[
+            BACKBONE_RADIUS,
+            BACKBONE_SPHERE_WIDTH_SEGMENTS,
+            BACKBONE_SPHERE_HEIGHT_SEGMENTS,
+          ]}
         />
-        <meshPhongMaterial color={CARBON_COLOR} />
+        <meshPhongMaterial color={BACKBONE_COLOR} />
       </instancedMesh>
 
-      {/* @ts-ignore */}
-      <instancedMesh
-        ref={oxygenMesh}
-        // @ts-ignore
-        args={[null, null, atomArrays.oxygen.length]}
-      >
-        <sphereBufferGeometry
-          args={[OXYGEN_RADIUS, ATOM_WIDTH_SEGMENTS, ATOM_HEIGHT_SEGMENTS]}
-        />
-        <meshPhongMaterial color={OXYGEN_COLOR} />
-      </instancedMesh>
-
-      {/* @ts-ignore */}
-      <instancedMesh
-        ref={nitrogenMesh}
-        // @ts-ignore
-        args={[null, null, atomArrays.nitrogen.length]}
-      >
-        <sphereBufferGeometry
-          args={[NITROGEN_RADIUS, ATOM_WIDTH_SEGMENTS, ATOM_HEIGHT_SEGMENTS]}
-        />
-        <meshPhongMaterial color={NITROGEN_COLOR} />
-      </instancedMesh>
-
-      <instancedMesh
-        ref={phosphorusMesh}
-        // @ts-ignore
-        args={[null, null, atomArrays.phosphorus.length]}
-      >
-        <sphereBufferGeometry
-          args={[PHOSPHORUS_RADIUS, ATOM_WIDTH_SEGMENTS, ATOM_HEIGHT_SEGMENTS]}
-        />
-        <meshPhongMaterial color={PHOSPHORUS_COLOR} />
-      </instancedMesh>
+      <BaseInstancedMesh letter={ADENINE} />
+      <BaseInstancedMesh letter={CYTOSINE} />
+      <BaseInstancedMesh letter={GUANINE} />
+      <BaseInstancedMesh letter={THYMINE} />
     </group>
   );
 }
@@ -148,5 +122,26 @@ export function Canvas3D() {
         </EffectComposer>
       </Canvas>
     </>
+  );
+}
+
+const BASE_RADIUS = 0.2;
+const BASE_RADIAL_SEGMENTS = 8;
+function BaseInstancedMesh(props: { letter: NucleotideLetterType }) {
+  const baseMesh = useRef<THREE.InstancedMesh | null>(null);
+  useFrame((state) => {
+    populateMesh(baseMesh.current, entities[props.letter]);
+  });
+  return (
+    <instancedMesh
+      ref={baseMesh}
+      // @ts-ignore
+      args={[null, null, entities[props.letter].length]}
+    >
+      <cylinderGeometry
+        args={[BASE_RADIUS, BASE_RADIUS, 10, BASE_RADIAL_SEGMENTS]}
+      />
+      <meshPhongMaterial color={BASE_COLORS[props.letter]} />
+    </instancedMesh>
   );
 }

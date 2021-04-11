@@ -1,6 +1,6 @@
-export type VectorType = [number, number, number];
+import { Vector3, Euler } from "three";
 
-export type AnchorPairType = { sense: VectorType; antisense: VectorType };
+export type AnchorPairType = { sense: Vector3; antisense: Vector3 };
 
 export const ADENINE = "A";
 export const CYTOSINE = "C";
@@ -13,32 +13,16 @@ export type NucleotideLetterType =
   | typeof GUANINE
   | typeof THYMINE;
 
-export enum BondTypeType {
-  Hydrogen,
-  Covalent,
-  CovalentDouble,
-}
-
-export type AtomType = {
-  originalPos: VectorType;
-  pos: VectorType;
-  speed: VectorType;
+export type EntityType = {
+  pos: Vector3;
+  rot: Euler;
+  scale: Vector3;
 };
 
-export type AtomArraysType = {
-  carbon: Array<AtomType>;
-  oxygen: Array<AtomType>;
-  nitrogen: Array<AtomType>;
-  phosphorus: Array<AtomType>;
-};
-
-export type MolViewPositionType = {
-  positions: {
-    carbon: Array<VectorType>;
-    oxygen: Array<VectorType>;
-    nitrogen: Array<VectorType>;
-    phosphorus: Array<VectorType>;
-  };
-  origin: VectorType;
-  endpoint: VectorType;
+export type EntitiesType = {
+  backbone: Array<EntityType>;
+  [ADENINE]: Array<EntityType>;
+  [CYTOSINE]: Array<EntityType>;
+  [GUANINE]: Array<EntityType>;
+  [THYMINE]: Array<EntityType>;
 };
