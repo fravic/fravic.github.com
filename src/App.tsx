@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import "./App.css";
 
 import { Canvas3D } from "./Canvas3D/";
