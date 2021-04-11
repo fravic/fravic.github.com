@@ -1,9 +1,10 @@
 import * as THREE from "three";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useMemo } from "react";
 import { Canvas, useThree, useFrame } from "react-three-fiber";
 
-import { polynucleotideStrand } from "../molecules/generators";
+import { CapsuleBufferGeometry } from "../lib/three-js-capsule-geometry";
+import { polynucleotideStrand } from "../generators/generators";
 import { fasta } from "../sequence.fa";
 import {
   EntityType,
@@ -12,12 +13,12 @@ import {
   GUANINE,
   THYMINE,
   NucleotideLetterType,
-} from "../molecules/types";
+} from "../generators/types";
 
 const entities = polynucleotideStrand(fasta.split("\n")[1]);
 
 const BACKBONE_COLOR = 0x7e7e7e;
-const BACKBONE_RADIUS = 0.375;
+const BACKBONE_RADIUS = 0.25;
 const BACKBONE_SPHERE_WIDTH_SEGMENTS = 12;
 const BACKBONE_SPHERE_HEIGHT_SEGMENTS = 12;
 
@@ -126,9 +127,24 @@ export function Canvas3D() {
 }
 
 const BASE_RADIUS = 0.2;
+const BASE_CAP_SEGMENTS = 3;
 const BASE_RADIAL_SEGMENTS = 8;
+const BASE_LENGTH = 1.2;
 function BaseInstancedMesh(props: { letter: NucleotideLetterType }) {
   const baseMesh = useRef<THREE.InstancedMesh | null>(null);
+  const capsuleGeometry = useMemo(
+    () =>
+      new CapsuleBufferGeometry(
+        BASE_RADIUS,
+        BASE_RADIUS,
+        BASE_LENGTH,
+        BASE_RADIAL_SEGMENTS,
+        1,
+        BASE_CAP_SEGMENTS,
+        BASE_CAP_SEGMENTS
+      ),
+    []
+  );
   useFrame((state) => {
     populateMesh(baseMesh.current, entities[props.letter]);
   });
@@ -136,11 +152,8 @@ function BaseInstancedMesh(props: { letter: NucleotideLetterType }) {
     <instancedMesh
       ref={baseMesh}
       // @ts-ignore
-      args={[null, null, entities[props.letter].length]}
+      args={[capsuleGeometry, null, entities[props.letter].length]}
     >
-      <cylinderGeometry
-        args={[BASE_RADIUS, BASE_RADIUS, 10, BASE_RADIAL_SEGMENTS]}
-      />
       <meshPhongMaterial color={BASE_COLORS[props.letter]} />
     </instancedMesh>
   );

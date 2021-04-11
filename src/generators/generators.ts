@@ -9,10 +9,9 @@ import {
   THYMINE,
 } from "./types";
 
-const BASE_PAIR_HEIGHT = 0.8;
+const BASE_PAIR_HEIGHT = 0.75;
 const BASE_PAIR_RADIUS = 2;
 const BASE_PAIR_ROTATION_RAD = 0.2;
-const BASE_SCALE_MULTIPLIER = 0.08;
 const ANTISENSE_OFFSET_RAD = (Math.PI * 3) / 4;
 
 export function polynucleotideStrand(sequence: string): EntitiesType {
@@ -87,6 +86,8 @@ function oppositeLetter(letter: NucleotideLetterType): NucleotideLetterType {
   return GUANINE;
 }
 
+const BASE_OFFSET = 0.28;
+
 function addBasePair(
   letter: NucleotideLetterType,
   anchors: AnchorPairType,
@@ -95,19 +96,19 @@ function addBasePair(
   const senseBasePos = new Vector3().lerpVectors(
     anchors.sense,
     anchors.antisense,
-    0.25
+    BASE_OFFSET
   );
   const antisenseBasePos = new Vector3().lerpVectors(
     anchors.sense,
     anchors.antisense,
-    0.75
+    1 - BASE_OFFSET
   );
   const antisenseLetter = oppositeLetter(letter);
   // Found through random experimentation
   const angle =
     -Math.atan2(anchors.antisense.z, anchors.antisense.x) - Math.PI / 8;
   const scale =
-    anchors.sense.clone().setComponent(1, 0).length() * BASE_SCALE_MULTIPLIER;
+    anchors.sense.clone().setComponent(1, 0).length() / BASE_PAIR_RADIUS;
   out[letter].push({
     pos: senseBasePos,
     rot: new Euler(0, angle, Math.PI / 2),
