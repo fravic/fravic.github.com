@@ -14,14 +14,19 @@ function App() {
         <div className="body">
           <div className="subject">Subject:</div>
           <h1>Fravic Fernando</h1>
-          <div className="title">Software Engineer</div>
+          <div className="subject">Software Engineer</div>
           <div className="sample">
             <h4>DNA Sample Section</h4>
             <p>
-              Access granted &mdash; subject's 23andMe results □
+              Access granted
               <br />
-              Eye color gene segment, viz built with React and Three.JS □
-              <br />□ □ □ □ □
+              Loading subject 23andMe results [eye color gene]
+              <br />
+              Rendering in React and Three.js
+              <br />
+              ...
+              <br />
+              Done in 890ms
             </p>
           </div>
           <div className="fasta">{fasta.replace(/\n/, " ")}</div>

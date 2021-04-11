@@ -112,7 +112,11 @@ function Camera() {
 export function Canvas3D() {
   return (
     <>
-      <Canvas className="canvas" gl={{ alpha: false }}>
+      <Canvas
+        className="canvas"
+        gl={{ alpha: false }}
+        pixelRatio={window.devicePixelRatio}
+      >
         <Camera />
         <color attach="background" args={[1, 1, 1]} />
         <ambientLight color={0xeeeeee} intensity={0.5} />

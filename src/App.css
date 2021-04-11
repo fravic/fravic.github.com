@@ -1,3 +1,7 @@
+:root {
+  --font-monospace: "Courier New", "Courier", monospace;
+}
+
 .appContainer {
   max-width: 2000px;
   margin: 0 auto;
@@ -8,6 +12,19 @@
   height: 150vh;
   width: 100%;
   z-index: 1;
+
+  opacity: 0;
+  animation: fade-in 1s linear 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .canvas {
@@ -38,26 +55,28 @@
 
 .fasta {
   font-size: 12px;
-  line-height: 1.5em;
+  line-height: 1.3em;
   color: #4a4a4a;
+
+  font-family: var(--font-monospace);
 }
 
 .subject {
   text-transform: uppercase;
-  font-size: 10px;
-  font-weight: bold;
-  letter-spacing: 0.6em;
-  padding-left: 2px;
-}
-
-.title {
   font-size: 12px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  padding-left: 2px;
+
+  font-family: var(--font-monospace);
 }
 
 .sample {
   margin-bottom: 30px;
+  margin-top: 10px;
+  font-size: 15px;
+
+  font-family: var(--font-monospace);
 }
 
 .sample h4 {
@@ -66,7 +85,7 @@
   margin-bottom: 0;
 
   border-top: 1px solid #84a59d;
-  background: rgba(255, 255, 255, 0.5);
+  font-weight: bold;
 }
 
 .sample p {
@@ -74,8 +93,6 @@
   border-bottom: 1px solid #84a59d;
   margin: 0;
   padding: 10px 20px;
-
-  background: rgba(255, 255, 255, 0.5);
 }
 
 @media (min-width: 768px) {
