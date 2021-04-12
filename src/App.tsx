@@ -36,7 +36,7 @@ function App() {
             <p>
               Access granted:
               <br />
-              Subject 23andMe result [eye color]
+              Subject 23andMe result <div className="nobreak">[eye color]</div>
               <br />
               Rendering in React and Three.js
               <br />

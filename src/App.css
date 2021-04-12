@@ -140,7 +140,7 @@
 
 .sample h4 {
   display: inline-block;
-  padding: 8px 20px;
+  padding: 8px 0;
   margin-bottom: 0;
 
   border-top: 1px solid var(--color-border);
@@ -151,7 +151,11 @@
   border-top: 1px solid var(--color-border);
   border-bottom: 1px solid var(--color-border);
   margin: 0;
-  padding: 10px 20px;
+  padding: 10px 0;
+}
+
+.nobreak {
+  display: inline-block;
 }
 
 @media (min-width: 768px) {
@@ -176,6 +180,14 @@
 
   .gradient {
     display: none;
+  }
+
+  .sample h4 {
+    padding: 8px 20px;
+  }
+
+  .sample p {
+    padding: 10px 20px;
   }
 }
 
