@@ -96,6 +96,8 @@
   font-size: 15px;
   height: 0;
   overflow: hidden;
+  width: 460px;
+  max-width: 100%;
 
   font-family: var(--font-monospace);
   animation: height-in 0.3s cubic-bezier(0.33, 1, 0.68, 1) 1.5s forwards;
@@ -221,7 +223,7 @@
 .icons {
   float: right;
   position: relative;
-  top: 22px;
+  top: 23px;
   font-size: 26px;
 }
 

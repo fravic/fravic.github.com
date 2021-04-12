@@ -34,9 +34,9 @@ function App() {
               </a>
             </div>
             <p>
-              Access granted
+              Access granted:
               <br />
-              Loading subject 23andMe results [eye color gene]
+              Subject 23andMe result [eye color]
               <br />
               Rendering in React and Three.js
               <br />
