@@ -118,7 +118,7 @@ export function Canvas3D() {
         pixelRatio={window.devicePixelRatio}
       >
         <Camera />
-        <color attach="background" args={[1, 1, 1]} />
+        <color attach="background" args={[new THREE.Color("white")] as any} />
         <ambientLight color={0xeeeeee} intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
         <PolynucleotideStrand />
